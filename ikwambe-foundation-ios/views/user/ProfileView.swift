@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @State private var value = true
+    @State private var login = true
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
@@ -31,10 +32,14 @@ struct ProfileView: View {
             
             Text("My donations")
                 .font(.title)
-            Text("Please login/signup to keep track of your donations")
+            
+            if !login {
+                Text("Please login/signup to keep track of your donations")
+            } else {
+                Text("No donations have been found")
+            }
             
             Spacer()
-        
         }.navigationTitle("Profile")
             .padding(.horizontal, 15)
             .padding(.top, 15)

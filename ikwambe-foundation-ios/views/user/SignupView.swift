@@ -8,9 +8,48 @@
 import SwiftUI
 
 struct SignupView: View {
+    @State var fullName: String = ""
+    @State var email: String = ""
+    @State var password: String = ""
+    @State var confirmPassword: String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+        VStack(spacing: 0) {
+            TextField("Full name", text: $email)
+                .padding()
+                .cornerRadius(5.0)
+                .textFieldStyle(.roundedBorder)
+                .padding(.horizontal)
+            
+            TextField("Email address", text: $email)
+                .padding()
+                .cornerRadius(5.0)
+                .textFieldStyle(.roundedBorder)
+                .padding(.horizontal)
+
+            SecureField("Password", text: $password)
+                .padding()
+                .cornerRadius(5.0)
+                .textFieldStyle(.roundedBorder)
+                .padding(.horizontal)
+            
+            SecureField("Confirm your password", text: $confirmPassword)
+                .padding()
+                .cornerRadius(5.0)
+                .textFieldStyle(.roundedBorder)
+                .padding(.horizontal)
+            
+            Button("Signup", action: {
+                
+            })
+            
+            NavigationLink(destination: LoginView()) {
+                Text("Already have an account?")
+            }
+            
+            Spacer()
+                    
+        }.navigationTitle("Signup")    }
 }
 
 struct SignupView_Previews: PreviewProvider {
