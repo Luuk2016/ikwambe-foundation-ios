@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Text("Hello, world!")
+                .padding()
+        }.navigationTitle("Ikwambe Foundation")
     }
 }
 

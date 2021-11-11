@@ -20,7 +20,7 @@ struct ikwambe_foundation_iosApp: App {
                 }
                 
                 NavigationView {
-                    ContentView()
+                    ProjectsListView()
                 }
                 .tabItem {
                     Label("Donate", systemImage: "heart")
