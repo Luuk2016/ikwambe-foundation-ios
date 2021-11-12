@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 import KeychainAccess
 
-class IkwambeAPI : ObservableObject {
+class IkwambeAPI: ObservableObject {
     static let shared = IkwambeAPI()
 
     private let keychain = Keychain()
