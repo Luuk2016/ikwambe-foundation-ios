@@ -11,7 +11,35 @@ import SwiftUI
 struct ikwambe_foundation_iosApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                NavigationView {
+                    ContentView()
+                }
+                .tabItem {
+                    Label("The foundation", systemImage: "house.fill")
+                }
+                
+                NavigationView {
+                    ProjectsListView()
+                }
+                .tabItem {
+                    Label("Donate", systemImage: "heart")
+                }
+                
+                NavigationView {
+                    StoriesListView()
+                }
+                .tabItem {
+                    Label("Stories", systemImage: "person.2")
+                }
+                
+                NavigationView {
+                    ProfileView()
+                }
+                .tabItem {
+                    Label("My profile", systemImage: "person")
+                }
+            }
         }
     }
 }
