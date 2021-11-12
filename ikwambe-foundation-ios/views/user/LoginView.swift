@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct LoginView: View {
+    @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
     @State var email: String = ""
     @State var password: String = ""
+    @State var isFailureAlertPresented: Bool = false
+    
+    var formValid: Bool {
+        return email.count >= 3 && password.count >= 3
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -26,8 +32,14 @@ struct LoginView: View {
                 .padding(.horizontal)
             
             Button("Login", action: {
-                
-            })
+                ikwambeAPI.login(email: email, password: password)
+                { (isSuccess) in
+                    if (isSuccess == false) {
+                        print("failure!")
+                        isFailureAlertPresented = true
+                    }
+                }
+            }).disabled(formValid == false)
             
             NavigationLink(destination: SignupView()) {
                 Text("Don't have an account?")
@@ -36,6 +48,9 @@ struct LoginView: View {
             Spacer()
                     
         }.navigationTitle("Login")
+        .alert(isPresented: $isFailureAlertPresented) {
+            Alert(title: Text("Message"), message: Text("Login has failed, please try again"))
+        }
     }
 }
 

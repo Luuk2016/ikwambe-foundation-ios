@@ -36,8 +36,8 @@ class IkwambeAPI: ObservableObject {
         isAuthenticated = accessToken != nil
     }
     
-    func login(email: String, password: String) {
-    
+    func login(email: String, password: String, completionHandler:
+    @escaping (Bool) -> ()) {
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
@@ -48,22 +48,72 @@ class IkwambeAPI: ObservableObject {
         )
                 
         AF.request("https://ikwambefoundation.azurewebsites.net/api/Login", method: .post, parameters: data, encoder: JSONParameterEncoder.default, headers: headers).response { response in
-            debugPrint(response)
             switch response.result {
             case .success(let data):
-                do {
-                    let resData = try! JSONDecoder().decode(LoginResponse.self, from: data!)
-                } catch {
-                    print(error.localizedDescription)
+                if (response.response?.statusCode == 200) {
+                    do {
+                        let result = try JSONDecoder().decode(LoginResponse.self, from: data!)
+                        
+                        if (result.accessToken != "") {
+                            DispatchQueue.main.async {
+                                print(result.accessToken)
+                                self.accessToken = result.accessToken
+                            }
+                            completionHandler(true)
+                        } else {
+                            completionHandler(false)
+                        }
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                } else {
+                    completionHandler(false)
                 }
             case .failure(let err):
                 print(err.localizedDescription)
+                completionHandler(false)
             }
         }
     }
     
-    func signup(fullname: String, email: String, password: String) {
+    func signup(firstName: String, lastName: String, email: String, password: String, completionHandler:
+    @escaping (Bool) -> ()) {
+        let headers: HTTPHeaders = [
+            .contentType("application/json")
+        ]
         
+        let data = SignupRequest(
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+            subscription: true
+        )
+                
+        AF.request("https://ikwambefoundation.azurewebsites.net/api/users", method: .post, parameters: data, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+            switch response.result {
+            case .success(let data):
+                print(response.response?.statusCode)
+                if (response.response?.statusCode == 200) {
+                    do {
+                        let result = try JSONDecoder().decode(SignupResponse.self, from: data!)
+                        
+                        if (result.userId != "") {
+                            completionHandler(true)
+                        } else {
+                            completionHandler(false)
+                        }
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                } else {
+                    completionHandler(false)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                completionHandler(false)
+            }
+        }.resume()
     }
     
     func logout() {

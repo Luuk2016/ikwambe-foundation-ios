@@ -14,7 +14,7 @@ struct ProfileView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             if ikwambeAPI.isAuthenticated {
-                Text("Welcome John Doe")
+                Text("Welcome back!")
                     .font(.title3)
             } else {
                 Text("Together we can help Ikwambe")

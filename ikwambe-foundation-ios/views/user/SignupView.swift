@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct SignupView: View {
+    @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
     @State var firstName: String = ""
     @State var lastName: String = ""
     @State var email: String = ""
     @State var password: String = ""
     @State var confirmPassword: String = ""
+    @State var isSuccessAlertPresented: Bool = false
+    @State var isFailureAlertPresented: Bool = false
+    
+    var formValid: Bool {
+        return firstName.count >= 3 && lastName.count >= 3 && email.count >= 3 && password.count >= 3 && confirmPassword.count >= 3 && password == confirmPassword
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -47,15 +54,23 @@ struct SignupView: View {
                 .padding(.horizontal)
             
             Button("Signup", action: {
-                
-            })
+                ikwambeAPI.signup(firstName: firstName, lastName: lastName, email: email, password: password)
+                { (isSuccess) in
+                    if (isSuccess) {
+                        print("success!")
+                    } else {
+                        print("failure!")
+                    }
+                }
+                isFailureAlertPresented = true
+                print("test")
+            }).disabled(formValid == false)
             
             NavigationLink(destination: LoginView()) {
                 Text("Already have an account?")
             }
             
             Spacer()
-                    
         }.navigationTitle("Signup")
     }
 }

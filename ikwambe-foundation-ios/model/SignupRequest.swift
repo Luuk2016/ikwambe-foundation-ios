@@ -12,4 +12,5 @@ struct SignupRequest: Encodable {
     let lastName: String
     let email: String
     let password: String
+    let subscription: Bool
 }
