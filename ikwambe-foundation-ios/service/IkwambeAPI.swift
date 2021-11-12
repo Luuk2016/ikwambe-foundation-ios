@@ -93,7 +93,7 @@ class IkwambeAPI: ObservableObject {
         AF.request("https://ikwambefoundation.azurewebsites.net/api/users", method: .post, parameters: data, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result {
             case .success(let data):
-                print(response.response?.statusCode)
+//                print(response.response?.statusCode)
                 if (response.response?.statusCode == 200) {
                     do {
                         let result = try JSONDecoder().decode(SignupResponse.self, from: data!)
@@ -120,7 +120,22 @@ class IkwambeAPI: ObservableObject {
         accessToken = nil
     }
     
-    func getStories() {
-        
+    func getStories() -> StoriesResponse {
+        AF.request("https://ikwambefoundation.azurewebsites.net/api/stories").response { response in
+            switch response.result {
+            case .success(let data):
+                if (response.response?.statusCode == 200) {
+                    do {
+                        let result = try JSONDecoder().decode(StoriesResponse.self, from: data!)
+                        
+                        return result
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
     }
 }
