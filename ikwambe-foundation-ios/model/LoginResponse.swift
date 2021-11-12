@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LoginResponse {
+struct LoginResponse: Decodable {
     let accessToken: String
     let tokenType: String
     let expiresIn: Int
