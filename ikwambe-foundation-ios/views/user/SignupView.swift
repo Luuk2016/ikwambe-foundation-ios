@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct SignupView: View {
-    @State var fullName: String = ""
+    @State var firstName: String = ""
+    @State var lastName: String = ""
     @State var email: String = ""
     @State var password: String = ""
     @State var confirmPassword: String = ""
     
     var body: some View {
         VStack(spacing: 0) {
-            TextField("Full name", text: $email)
+            TextField("First name", text: $firstName)
+                .padding()
+                .cornerRadius(5.0)
+                .textFieldStyle(.roundedBorder)
+                .padding(.horizontal)
+            
+            TextField("Last name", text: $lastName)
                 .padding()
                 .cornerRadius(5.0)
                 .textFieldStyle(.roundedBorder)
@@ -49,7 +56,8 @@ struct SignupView: View {
             
             Spacer()
                     
-        }.navigationTitle("Signup")    }
+        }.navigationTitle("Signup")
+    }
 }
 
 struct SignupView_Previews: PreviewProvider {

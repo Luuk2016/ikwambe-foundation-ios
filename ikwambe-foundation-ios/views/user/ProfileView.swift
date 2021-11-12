@@ -34,7 +34,7 @@ struct ProfileView: View {
             Text("Updates")
                 .font(.title)
             
-            Toggle("Stay up-to-date by receiving push notifications", isOn: $value)
+            Toggle("Stay up-to-date by receiving push notifications.", isOn: $value)
             
             Text("My donations")
                 .font(.title)
