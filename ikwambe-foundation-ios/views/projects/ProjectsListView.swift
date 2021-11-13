@@ -10,7 +10,9 @@ import SwiftUI
 struct ProjectsListView: View {
     var body: some View {
         VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            NavigationLink(destination: DonateView()) {
+                Text("Donate here")
+            }
         }.navigationTitle("Projects")
     }
 }
