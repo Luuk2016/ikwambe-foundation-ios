@@ -10,12 +10,11 @@ import Alamofire
 import KeychainAccess
 
 class IkwambeAPI: ObservableObject {
+    @Published var isAuthenticated: Bool = false
     static let shared = IkwambeAPI()
-
     private let keychain = Keychain()
     private var accessTokenKeychainKey: String = "accessToken"
-    
-    @Published var isAuthenticated: Bool = false
+    private let baseURL: String = "https://ikwambefoundation.azurewebsites.net/api"
     
     var accessToken: String? {
         get {
@@ -47,7 +46,7 @@ class IkwambeAPI: ObservableObject {
             password: password
         )
                 
-        AF.request("https://ikwambefoundation.azurewebsites.net/api/Login", method: .post, parameters: data, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+        AF.request("\(baseURL)/Login", method: .post, parameters: data, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result {
             case .success(let data):
                 if (response.response?.statusCode == 200) {
@@ -90,10 +89,10 @@ class IkwambeAPI: ObservableObject {
             subscription: true
         )
                 
-        AF.request("https://ikwambefoundation.azurewebsites.net/api/users", method: .post, parameters: data, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+        AF.request("\(baseURL)/users", method: .post, parameters: data, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result {
             case .success(let data):
-                print(response.response?.statusCode)
+//                print(response.response?.statusCode)
                 if (response.response?.statusCode == 200) {
                     do {
                         let result = try JSONDecoder().decode(SignupResponse.self, from: data!)
@@ -122,5 +121,40 @@ class IkwambeAPI: ObservableObject {
     
     func getStories() {
         
+    }
+    
+    func createDonation(userId: String, projectId: String, amount: Double, completionHandler:
+    @escaping (PayPalTransactionResponse) -> ()) {
+        let headers: HTTPHeaders = [
+            .contentType("application/json")
+        ]
+        
+        let data: Parameters = [
+            "currency": "EUR",
+            "value": amount
+        ]
+                
+        AF.request("\(baseURL)/transactions/paypal/checkout", method: .get, parameters: data, encoding: URLEncoding(destination: .queryString), headers: headers).response { response in
+            switch response.result {
+            case .success(let data):
+//                print(response.response?.statusCode)
+                if (response.response?.statusCode == 200) {
+                    do {
+                        let result = try JSONDecoder().decode(PayPalTransactionResponse.self, from: data!)
+                        
+                        if (result.status == "CREATED") {
+                            completionHandler(result)
+                        } else {
+                            
+                        }
+
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
     }
 }
