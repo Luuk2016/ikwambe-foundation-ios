@@ -10,8 +10,8 @@ import SwiftUI
 struct ProjectsListView: View {
     var body: some View {
         VStack {
-            NavigationLink(destination: DonateView()) {
-                Text("Donate here")
+            NavigationLink(destination: DonateView(projectId: "138eef32-5e38-4c7d-9c18-d8f22afca86a")) {
+                Text("Donate to Ikwambe Waterpump")
             }
         }.navigationTitle("Projects")
     }

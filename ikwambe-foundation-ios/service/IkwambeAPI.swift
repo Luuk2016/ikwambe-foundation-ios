@@ -123,4 +123,9 @@ class IkwambeAPI: ObservableObject {
     func getStories() {
         
     }
+    
+    func createDonation(userId: String, projectId: String, amount: Double, completionHandler:
+    @escaping (Bool) -> ()) {
+        completionHandler(true)
+    }
 }
