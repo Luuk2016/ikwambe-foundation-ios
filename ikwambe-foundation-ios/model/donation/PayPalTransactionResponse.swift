@@ -11,5 +11,5 @@ struct PayPalTransactionResponse: Codable {
     let message: String
     let link: String
     let orderId: String
-    let status: Double
+    let status: String
 }

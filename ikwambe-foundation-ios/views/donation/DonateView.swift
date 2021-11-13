@@ -9,8 +9,11 @@ import SwiftUI
 
 struct DonateView: View {
     @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
+    @Environment(\.openURL) var openURL
     let projectId: String
     @State private var amount: Double = 0
+    @State private var paymentMethodSelected: Bool = false
+    @State var transaction: PayPalTransactionResponse?
     
     var body: some View {
         VStack {
@@ -44,20 +47,27 @@ struct DonateView: View {
                         amount = 100.00
                     }
                 }
-            }.padding(70)
-            
-            if (amount != 0) {
-                Button("Donate € \(amount, specifier: "%.2f")") {
-                    ikwambeAPI.createDonation(userId: "", projectId: projectId, amount: amount)
-                    { (isSuccess) in
-                        if (isSuccess) {
-                            print("success!")
-                        } else {
-                            print("failure!")
+                
+                if (amount != 0) {
+                    Text("Select payment method")
+                    
+                    Button("PayPal") {
+                        paymentMethodSelected = true
+                    }
+                }
+                
+                if (paymentMethodSelected) {
+                    Text("Click the button below to pay")
+                    
+                    Button("Donate € \(amount, specifier: "%.2f")") {
+                        ikwambeAPI.createDonation(userId: "", projectId: projectId, amount: amount)
+                        { (transactionResponse) in
+                            openURL(URL(string: transactionResponse.link)!)
                         }
                     }
                 }
-            }
+                
+            }.padding(70)
             
             Spacer()
         }.navigationTitle("Donate")
