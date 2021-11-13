@@ -119,8 +119,30 @@ class IkwambeAPI: ObservableObject {
         accessToken = nil
     }
     
-    func getStories() {
+    func getStories(completionHandler:
+    @escaping (StoriesResponse) -> ()) {
+        let headers: HTTPHeaders = [
+            .contentType("application/json")
+        ]
         
+        AF.request("\(baseURL)/stories", method: .get, headers: headers).response { response in
+            switch response.result {
+            case .success(let data):
+                print(response.response?.statusCode)
+                if (response.response?.statusCode == 200) {
+                    do {
+                        let result = try JSONDecoder().decode(StoriesResponse.self, from: data!)
+                        
+                        completionHandler(result)
+
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
     }
     
     func createDonation(userId: String, projectId: String, amount: Double, completionHandler:

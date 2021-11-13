@@ -8,9 +8,23 @@
 import SwiftUI
 
 struct StoriesListView: View {
+    @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
+    @State var stories: [Story] = []
+    
     var body: some View {
         VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            Text("Hello World")
+            
+            Button("Get Stories") {
+                ikwambeAPI.getStories()
+                { (storiesResponse) in
+                    stories = storiesResponse.stories
+                    ForEach(stories) { story in
+                        
+                    }
+                }
+            }
+            
         }.navigationTitle("Stories")
     }
 }
