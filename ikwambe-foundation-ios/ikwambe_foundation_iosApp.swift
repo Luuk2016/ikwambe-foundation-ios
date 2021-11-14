@@ -16,7 +16,7 @@ struct ikwambe_foundation_iosApp: App {
                     ContentView()
                 }
                 .tabItem {
-                    Label("The foundation", systemImage: "house.fill")
+                    Label("The Foundation", systemImage: "house.fill")
                 }
                 
                 NavigationView {
@@ -37,7 +37,7 @@ struct ikwambe_foundation_iosApp: App {
                     ProfileView()
                 }
                 .tabItem {
-                    Label("My profile", systemImage: "person")
+                    Label("My Profile", systemImage: "person")
                 }
             }
         }

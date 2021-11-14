@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import KeychainAccess
+import UIKit
 
 class IkwambeAPI: ObservableObject {
     @Published var isAuthenticated: Bool = false
@@ -92,7 +93,6 @@ class IkwambeAPI: ObservableObject {
         AF.request("\(baseURL)/users", method: .post, parameters: data, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result {
             case .success(let data):
-//                print(response.response?.statusCode)
                 if (response.response?.statusCode == 200) {
                     do {
                         let result = try JSONDecoder().decode(SignupResponse.self, from: data!)
@@ -119,7 +119,46 @@ class IkwambeAPI: ObservableObject {
         accessToken = nil
     }
     
-    func getStories() {
+    func getStories(completionHandler:
+    @escaping ([Story]) -> ()) {
+        let headers: HTTPHeaders = [
+            .contentType("application/json")
+        ]
+        
+        AF.request("\(baseURL)/stories", method: .get, headers: headers).response { response in
+            switch response.result {
+            case .success(let data):
+                if (response.response?.statusCode == 200) {
+                    do {
+                        let result = try JSONDecoder().decode([Story].self, from: data!)
+                                                
+                        completionHandler(result)
+
+                    } catch {
+                        print(error)
+                    }
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+    
+    func getImage(imageURL: String, completionHandler:
+    @escaping (UIImage) -> ()) {
+        AF.request(imageURL, method: .get).response { response in
+            switch response.result {
+            case .success(let data):
+                if (response.response?.statusCode == 200) {
+                    guard let result = UIImage(data: data!, scale: 1) else { return }
+                                            
+                    completionHandler(result)
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
+        
         
     }
     
@@ -137,7 +176,6 @@ class IkwambeAPI: ObservableObject {
         AF.request("\(baseURL)/transactions/paypal/checkout", method: .get, parameters: data, encoding: URLEncoding(destination: .queryString), headers: headers).response { response in
             switch response.result {
             case .success(let data):
-//                print(response.response?.statusCode)
                 if (response.response?.statusCode == 200) {
                     do {
                         let result = try JSONDecoder().decode(PayPalTransactionResponse.self, from: data!)
