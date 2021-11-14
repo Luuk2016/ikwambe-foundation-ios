@@ -7,12 +7,13 @@
 
 import Foundation
 
-struct Story: Codable {
-    let StoryId: String
-    let Title: String
-    let ImageURL: String
-    let PublishDate: String
-    let Summary: String
-    let Description: String
-    let Author: String
+struct Story: Decodable, Identifiable {
+    var id: String { storyId }
+    let storyId: String
+    let title: String
+    let imageURL: String
+    let publishDate: String
+    let summary: String
+    let description: String
+    let author: String
 }

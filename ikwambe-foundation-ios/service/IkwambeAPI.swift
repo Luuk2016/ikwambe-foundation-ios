@@ -92,7 +92,6 @@ class IkwambeAPI: ObservableObject {
         AF.request("\(baseURL)/users", method: .post, parameters: data, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result {
             case .success(let data):
-//                print(response.response?.statusCode)
                 if (response.response?.statusCode == 200) {
                     do {
                         let result = try JSONDecoder().decode(SignupResponse.self, from: data!)
@@ -120,7 +119,7 @@ class IkwambeAPI: ObservableObject {
     }
     
     func getStories(completionHandler:
-    @escaping (StoriesResponse) -> ()) {
+    @escaping ([Story]) -> ()) {
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
@@ -128,19 +127,18 @@ class IkwambeAPI: ObservableObject {
         AF.request("\(baseURL)/stories", method: .get, headers: headers).response { response in
             switch response.result {
             case .success(let data):
-                print(response.response?.statusCode)
                 if (response.response?.statusCode == 200) {
                     do {
-                        let result = try JSONDecoder().decode(StoriesResponse.self, from: data!)
-                        
+                        let result = try JSONDecoder().decode([Story].self, from: data!)
+                                                
                         completionHandler(result)
 
                     } catch {
-                        print(error.localizedDescription)
+                        print(error)
                     }
                 }
             case .failure(let err):
-                print(err.localizedDescription)
+                print(err)
             }
         }
     }
@@ -159,7 +157,6 @@ class IkwambeAPI: ObservableObject {
         AF.request("\(baseURL)/transactions/paypal/checkout", method: .get, parameters: data, encoding: URLEncoding(destination: .queryString), headers: headers).response { response in
             switch response.result {
             case .success(let data):
-//                print(response.response?.statusCode)
                 if (response.response?.statusCode == 200) {
                     do {
                         let result = try JSONDecoder().decode(PayPalTransactionResponse.self, from: data!)

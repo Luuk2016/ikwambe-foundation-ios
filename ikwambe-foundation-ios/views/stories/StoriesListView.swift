@@ -13,18 +13,19 @@ struct StoriesListView: View {
     
     var body: some View {
         VStack {
-            Text("Hello World")
-            
-            Button("Get Stories") {
-                ikwambeAPI.getStories()
-                { (storiesResponse) in
-                    stories = storiesResponse.stories
-                    ForEach(stories) { story in
-                        
+            if (stories.isEmpty == false) {
+                List(stories) { story in
+                    Text(story.title)
+                }
+            } else {
+                ProgressView("Loading stories")
+                .onAppear {
+                    ikwambeAPI.getStories()
+                    { (storiesResponse) in
+                        stories = storiesResponse
                     }
                 }
             }
-            
         }.navigationTitle("Stories")
     }
 }
