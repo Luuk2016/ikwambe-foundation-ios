@@ -45,7 +45,6 @@ struct LoginView: View {
             }
             
             Spacer()
-                    
         }.navigationTitle("Login")
         .alert(isPresented: $isFailureAlertPresented) {
             Alert(title: Text("Message"), message: Text("Login has failed, please try again"))

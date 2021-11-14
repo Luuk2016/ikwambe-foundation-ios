@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Story: Decodable, Identifiable {
+struct Story: Codable, Identifiable {
     var id: String { storyId }
     let storyId: String
     let title: String
