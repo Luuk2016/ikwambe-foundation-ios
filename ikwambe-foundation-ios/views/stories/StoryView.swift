@@ -8,15 +8,39 @@
 import SwiftUI
 
 struct StoryView: View {
+    @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
+    let story: Story
+    @State private var storyImage: UIImage? = nil
+    
     var body: some View {
-        VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        }.navigationTitle("Story")
+        ScrollView {
+            VStack {
+                if let storyImage = storyImage {
+                    Image(uiImage: storyImage)
+                        .resizable()
+                        .scaledToFit()
+                } else {
+                    ProgressView("Loading image")
+                        .onAppear {
+                            ikwambeAPI.getImage(imageURL: story.imageURL) { (image) in
+                                self.storyImage = image
+                            }
+                        }
+                }
+                
+                VStack(alignment: .leading, spacing: 25) {
+                    Text(story.summary)
+                        .font(Font.headline.weight(.bold))
+                    
+                    Text(story.description)
+                }.padding(.horizontal, 15)
+            }
+        }.navigationTitle(story.title)
     }
 }
 
 struct StoryView_Previews: PreviewProvider {
     static var previews: some View {
-        StoryView()
+        StoryView(story: Story.testStory1)
     }
 }

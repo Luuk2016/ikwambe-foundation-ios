@@ -54,8 +54,7 @@ struct SignupView: View {
                 .padding(.horizontal)
             
             Button("Signup", action: {
-                ikwambeAPI.signup(firstName: firstName, lastName: lastName, email: email, password: password)
-                { (isSuccess) in
+                ikwambeAPI.signup(firstName: firstName, lastName: lastName, email: email, password: password) { (isSuccess) in
                     if (isSuccess) {
                         print("success!")
                     } else {

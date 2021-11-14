@@ -32,8 +32,7 @@ struct LoginView: View {
                 .padding(.horizontal)
             
             Button("Login", action: {
-                ikwambeAPI.login(email: email, password: password)
-                { (isSuccess) in
+                ikwambeAPI.login(email: email, password: password) { (isSuccess) in
                     if (isSuccess == false) {
                         print("failure!")
                         isFailureAlertPresented = true

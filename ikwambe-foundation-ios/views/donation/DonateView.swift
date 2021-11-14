@@ -60,8 +60,7 @@ struct DonateView: View {
                     Text("Click the button below to pay")
                     
                     Button("Donate € \(amount, specifier: "%.2f")") {
-                        ikwambeAPI.createDonation(userId: "", projectId: projectId, amount: amount)
-                        { (transactionResponse) in
+                        ikwambeAPI.createDonation(userId: "", projectId: projectId, amount: amount) { (transactionResponse) in
                             openURL(URL(string: transactionResponse.link)!)
                         }
                     }

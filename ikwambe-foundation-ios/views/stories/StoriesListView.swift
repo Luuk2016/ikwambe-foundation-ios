@@ -9,23 +9,31 @@ import SwiftUI
 
 struct StoriesListView: View {
     @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
-    @State var stories: [Story] = []
+    @State var stories: [Story] = Story.testStories
+//    @State var stories: [Story] = []
     
     var body: some View {
-        VStack {
-            if (stories.isEmpty == false) {
-                List(stories) { story in
-                    Text(story.title)
-                }
-            } else {
-                ProgressView("Loading stories")
-                .onAppear {
-                    ikwambeAPI.getStories()
-                    { (storiesResponse) in
-                        stories = storiesResponse
+        ScrollView {
+            VStack {
+                Text("Be surprised by the most unique, moving or telling stories of the Ikwambe foundation.\n\nRead the stories of the farmers and residents of Ikwambe.")
+                
+                if (stories.isEmpty == false) {
+                    ForEach(stories) { story in
+                        NavigationLink(destination: StoryView(story: story)) {
+                            StoryCell(story: story)
+                        }
                     }
+                } else {
+                    ProgressView("Loading stories")
+//                    .onAppear {
+//                        ikwambeAPI.getStories(){ (storiesResponse) in
+//                            stories = storiesResponse
+//                        }
+//                    }
                 }
-            }
+            }.padding(.horizontal, 15)
+            
+            
         }.navigationTitle("Stories")
     }
 }

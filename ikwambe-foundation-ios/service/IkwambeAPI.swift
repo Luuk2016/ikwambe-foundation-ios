@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import KeychainAccess
+import UIKit
 
 class IkwambeAPI: ObservableObject {
     @Published var isAuthenticated: Bool = false
@@ -141,6 +142,24 @@ class IkwambeAPI: ObservableObject {
                 print(err)
             }
         }
+    }
+    
+    func getImage(imageURL: String, completionHandler:
+    @escaping (UIImage) -> ()) {
+        AF.request(imageURL, method: .get).response { response in
+            switch response.result {
+            case .success(let data):
+                if (response.response?.statusCode == 200) {
+                    guard let result = UIImage(data: data!, scale: 1) else { return }
+                                            
+                    completionHandler(result)
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
+        
+        
     }
     
     func createDonation(userId: String, projectId: String, amount: Double, completionHandler:
