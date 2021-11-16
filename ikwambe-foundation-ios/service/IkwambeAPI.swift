@@ -168,7 +168,7 @@ class IkwambeAPI: ObservableObject {
     }
     
     func createDonation(userId: String, projectId: String, amount: Double, completionHandler:
-    @escaping (PayPalTransactionResponse) -> ()) {
+    @escaping (TransactionResponse) -> ()) {
         let data: Parameters = [
             "currency": "EUR",
             "value": amount
@@ -179,7 +179,7 @@ class IkwambeAPI: ObservableObject {
             case .success(let data):
                 if (response.response?.statusCode == 200) {
                     do {
-                        let result = try JSONDecoder().decode(PayPalTransactionResponse.self, from: data!)
+                        let result = try JSONDecoder().decode(TransactionResponse.self, from: data!)
                         
                         if (result.status == "CREATED") {
                             completionHandler(result)

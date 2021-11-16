@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DonateView: View {
     @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
-    @State var transaction: PayPalTransactionResponse?
+    @State var transaction: TransactionResponse?
     @State private var amount: Double = 0
     @Environment(\.openURL) var openURL
     let project: Project

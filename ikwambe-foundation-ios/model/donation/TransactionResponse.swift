@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PayPalTransactionResponse: Codable {
+struct TransactionResponse: Codable {
     let message: String
     let link: String
     let orderId: String
