@@ -8,10 +8,27 @@
 import SwiftUI
 
 struct ProjectsListView: View {
+    @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
+    @State var projects: [Project] = [Project.testProject]
+//    @State var projects: [Project] = []
+    
     var body: some View {
         VStack {
-            NavigationLink(destination: DonateView(projectId: "138eef32-5e38-4c7d-9c18-d8f22afca86a")) {
-                Text("Donate to Ikwambe Waterpump")
+            Text("Our current projects:")
+            
+            if (projects.isEmpty == false) {
+                ForEach(projects) { project in
+                    NavigationLink(destination: ProjectView(project: project)) {
+                        Text(project.nameOfProject)
+                    }
+                }
+            } else {
+                ProgressView("Loading projects")
+                .onAppear {
+                    ikwambeAPI.getProjects(){ (projects) in
+                        self.projects = projects
+                    }
+                }
             }
         }.navigationTitle("Projects")
     }

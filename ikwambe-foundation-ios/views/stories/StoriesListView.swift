@@ -25,11 +25,11 @@ struct StoriesListView: View {
                     }
                 } else {
                     ProgressView("Loading stories")
-//                    .onAppear {
-//                        ikwambeAPI.getStories(){ (storiesResponse) in
-//                            stories = storiesResponse
-//                        }
-//                    }
+                    .onAppear {
+                        ikwambeAPI.getStories(){ (stories) in
+                            self.stories = stories
+                        }
+                    }
                 }
             }.padding(.horizontal, 15)
             

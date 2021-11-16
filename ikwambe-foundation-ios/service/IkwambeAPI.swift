@@ -38,16 +38,12 @@ class IkwambeAPI: ObservableObject {
     
     func login(email: String, password: String, completionHandler:
     @escaping (Bool) -> ()) {
-        let headers: HTTPHeaders = [
-            .contentType("application/json")
-        ]
-        
         let data = LoginRequest (
             email: email,
             password: password
         )
                 
-        AF.request("\(baseURL)/Login", method: .post, parameters: data, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+        AF.request("\(baseURL)/Login", method: .post, parameters: data, encoder: JSONParameterEncoder.default).response { response in
             switch response.result {
             case .success(let data):
                 if (response.response?.statusCode == 200) {
@@ -78,10 +74,6 @@ class IkwambeAPI: ObservableObject {
     
     func signup(firstName: String, lastName: String, email: String, password: String, completionHandler:
     @escaping (Bool) -> ()) {
-        let headers: HTTPHeaders = [
-            .contentType("application/json")
-        ]
-        
         let data = SignupRequest(
             firstName: firstName,
             lastName: lastName,
@@ -90,7 +82,7 @@ class IkwambeAPI: ObservableObject {
             subscription: true
         )
                 
-        AF.request("\(baseURL)/users", method: .post, parameters: data, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+        AF.request("\(baseURL)/users", method: .post, parameters: data, encoder: JSONParameterEncoder.default).response { response in
             switch response.result {
             case .success(let data):
                 if (response.response?.statusCode == 200) {
@@ -121,11 +113,7 @@ class IkwambeAPI: ObservableObject {
     
     func getStories(completionHandler:
     @escaping ([Story]) -> ()) {
-        let headers: HTTPHeaders = [
-            .contentType("application/json")
-        ]
-        
-        AF.request("\(baseURL)/stories", method: .get, headers: headers).response { response in
+        AF.request("\(baseURL)/stories", method: .get).response { response in
             switch response.result {
             case .success(let data):
                 if (response.response?.statusCode == 200) {
@@ -158,22 +146,35 @@ class IkwambeAPI: ObservableObject {
                 print(err)
             }
         }
-        
-        
+    }
+    
+    func getProjects(completionHandler:
+    @escaping ([Project]) -> ()) {
+        AF.request("\(baseURL)/waterpumps", method: .get).response { response in
+            switch response.result {
+            case .success(let data):
+                if (response.response?.statusCode == 200) {
+                    do {
+                        let result = try JSONDecoder().decode([Project].self, from: data!)
+                        completionHandler(result)
+                    } catch {
+                        print(error)
+                    }
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
     }
     
     func createDonation(userId: String, projectId: String, amount: Double, completionHandler:
     @escaping (PayPalTransactionResponse) -> ()) {
-        let headers: HTTPHeaders = [
-            .contentType("application/json")
-        ]
-        
         let data: Parameters = [
             "currency": "EUR",
             "value": amount
         ]
                 
-        AF.request("\(baseURL)/transactions/paypal/checkout", method: .get, parameters: data, encoding: URLEncoding(destination: .queryString), headers: headers).response { response in
+        AF.request("\(baseURL)/transactions/paypal/checkout", method: .get, parameters: data, encoding: URLEncoding(destination: .queryString)).response { response in
             switch response.result {
             case .success(let data):
                 if (response.response?.statusCode == 200) {
