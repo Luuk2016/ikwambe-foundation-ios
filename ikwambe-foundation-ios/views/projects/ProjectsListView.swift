@@ -9,14 +9,17 @@ import SwiftUI
 
 struct ProjectsListView: View {
     @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
-    @State var projects: [Project] = []
+    @State var projects: [Project] = [Project.testProject]
+//    @State var projects: [Project] = []
     
     var body: some View {
         VStack {
+            Text("Our current projects:")
+            
             if (projects.isEmpty == false) {
                 ForEach(projects) { project in
-                    NavigationLink(destination: DonateView(projectId: project.id)) {
-                        Text("Donate to \(project.nameOfProject)")
+                    NavigationLink(destination: ProjectView(project: project)) {
+                        Text(project.nameOfProject)
                     }
                 }
             } else {
