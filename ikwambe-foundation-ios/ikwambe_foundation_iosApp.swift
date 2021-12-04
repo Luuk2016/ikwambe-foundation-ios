@@ -20,10 +20,10 @@ struct ikwambe_foundation_iosApp: App {
                 }
                 
                 NavigationView {
-                    ProjectsListView()
+                   ProjectView()
                 }
                 .tabItem {
-                    Label("Donate", systemImage: "heart")
+                    Label("Projects", systemImage: "heart")
                 }
                 
                 NavigationView {
@@ -37,7 +37,7 @@ struct ikwambe_foundation_iosApp: App {
                     ProfileView()
                 }
                 .tabItem {
-                    Label("My Profile", systemImage: "person")
+                    Label("Profile", systemImage: "person")
                 }
             }
         }

@@ -72,7 +72,7 @@ class IkwambeAPI: ObservableObject {
         }
     }
     
-    func signup(firstName: String, lastName: String, email: String, password: String, completionHandler:
+    func register(firstName: String, lastName: String, email: String, password: String, completionHandler:
     @escaping (Bool) -> ()) {
         let data = SignupRequest(
             firstName: firstName,
@@ -156,6 +156,25 @@ class IkwambeAPI: ObservableObject {
                 if (response.response?.statusCode == 200) {
                     do {
                         let result = try JSONDecoder().decode([Project].self, from: data!)
+                        completionHandler(result)
+                    } catch {
+                        print(error)
+                    }
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+    
+    func getProjectById(projectId: String, completionHandler:
+    @escaping (Project) -> ()) {
+        AF.request("\(baseURL)/waterpumps/\(projectId)", method: .get).response { response in
+            switch response.result {
+            case .success(let data):
+                if (response.response?.statusCode == 200) {
+                    do {
+                        let result = try JSONDecoder().decode(Project.self, from: data!)
                         completionHandler(result)
                     } catch {
                         print(error)

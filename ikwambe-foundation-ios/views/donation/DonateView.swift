@@ -12,7 +12,7 @@ struct DonateView: View {
     @State var transaction: TransactionResponse?
     @State private var amount: Double = 0
     @Environment(\.openURL) var openURL
-    let project: Project
+    let projectId: String
     
     var body: some View {
         VStack {
@@ -55,7 +55,7 @@ struct DonateView: View {
                     }
                     
                     Button("Donate € \(amount, specifier: "%.2f")") {
-                        ikwambeAPI.createDonation(userId: "", projectId: project.projectId, amount: amount) { (transactionResponse) in
+                        ikwambeAPI.createDonation(userId: "", projectId: projectId, amount: amount) { (transactionResponse) in
                             openURL(URL(string: transactionResponse.link)!)
                         }
                     }
@@ -70,6 +70,6 @@ struct DonateView: View {
 
 struct DonateView_Previews: PreviewProvider {
     static var previews: some View {
-        DonateView(project: Project.testProject)
+        DonateView(projectId: "4ae756ac-b37f-4651-b718-9d6b916b7f1e")
     }
 }

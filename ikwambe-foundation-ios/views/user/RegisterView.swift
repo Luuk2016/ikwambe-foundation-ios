@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SignupView: View {
+struct RegisterView: View {
     @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
     @State var firstName: String = ""
     @State var lastName: String = ""
@@ -53,8 +53,8 @@ struct SignupView: View {
                 .textFieldStyle(.roundedBorder)
                 .padding(.horizontal)
             
-            Button("Signup", action: {
-                ikwambeAPI.signup(firstName: firstName, lastName: lastName, email: email, password: password) { (isSuccess) in
+            Button("Register", action: {
+                ikwambeAPI.register(firstName: firstName, lastName: lastName, email: email, password: password) { (isSuccess) in
                     if (isSuccess) {
                         print("success!")
                     } else {
@@ -62,7 +62,6 @@ struct SignupView: View {
                     }
                 }
                 isFailureAlertPresented = true
-                print("test")
             }).disabled(formValid == false)
             
             NavigationLink(destination: LoginView()) {
@@ -76,6 +75,6 @@ struct SignupView: View {
 
 struct SignupView_Previews: PreviewProvider {
     static var previews: some View {
-        SignupView()
+        RegisterView()
     }
 }

@@ -17,32 +17,34 @@ struct ProfileView: View {
                 Text("Welcome back!")
                     .font(.title3)
             } else {
-                Text("Together we can help Ikwambe")
-                    .font(.title3)
-                
                 HStack {
                     NavigationLink(destination: LoginView()) {
                         Text("Login")
                     }
                     
-                    NavigationLink(destination: SignupView()) {
-                        Text("Signup")
+                    NavigationLink(destination: RegisterView()) {
+                        Text("Register")
                     }
                 }
             }
             
-            Text("Updates")
+            if !ikwambeAPI.isAuthenticated {
+                Text("Do I need an account?")
+                    .font(.title)
+                
+                Text("An account is fully optional. \nWith an account you can keep track of your donations.")
+            }
+            
+            Text("Stay up-to-date")
                 .font(.title)
             
-            Toggle("Stay up-to-date by receiving push notifications.", isOn: $value)
-            
-            Text("My donations")
-                .font(.title)
+            Toggle("Receive push notifications", isOn: $value)
             
             if ikwambeAPI.isAuthenticated {
+                Text("My donations")
+                    .font(.title)
+                
                 Text("No donations have been found")
-            } else {
-                Text("Please login/signup to keep track of your donations.")
             }
             
             Spacer()

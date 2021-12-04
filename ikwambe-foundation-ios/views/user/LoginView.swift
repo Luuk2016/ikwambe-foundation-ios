@@ -40,7 +40,7 @@ struct LoginView: View {
                 }
             }).disabled(formValid == false)
             
-            NavigationLink(destination: SignupView()) {
+            NavigationLink(destination: RegisterView()) {
                 Text("Don't have an account?")
             }
             

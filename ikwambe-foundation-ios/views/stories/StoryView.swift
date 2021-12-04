@@ -33,7 +33,17 @@ struct StoryView: View {
                         .font(Font.headline.weight(.bold))
                     
                     Text(story.description)
+                    
+                   
                 }.padding(.horizontal, 15)
+                
+                VStack {
+                    Text("A story by \(story.author)")
+                        .font(Font.headline.weight(.bold))
+                }
+                
+               
+                
             }
         }.navigationTitle(story.title)
     }

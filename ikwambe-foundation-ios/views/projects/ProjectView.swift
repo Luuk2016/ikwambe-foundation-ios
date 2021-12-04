@@ -8,24 +8,27 @@
 import SwiftUI
 
 struct ProjectView: View {
-    var project: Project
-    
     var body: some View {
-        VStack(alignment: .center, spacing: 20) {
-            
-            Text("How we're gonna do it")
-                .font(Font.title.weight(.medium))
-            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie nunc scelerisque, suscipit metus feugiat, interdum augue. Nam dolor mauris, euismod sed lectus ut, hendrerit rutrum libero. Vestibulum facilisis quam rhoncus pharetra mattis. Nulla facilisi. Curabitur ex ligula, ornare vel ex sed, fringilla iaculis mauris.")
-            
-            Text("Our current progression")
-                .font(Font.title.weight(.medium))
-            Text("For this project we need \(project.targetGoal, specifier: "%.0f"), we already have \(project.currentTotal, specifier: "%.0f").")
-            
-            NavigationLink(destination: DonateView(project: project)) {
-                Text("Donate now")
+        ScrollView {
+            VStack(alignment: .center, spacing: 20) {
+                Text("Our current progression")
+                    .font(Font.title.weight(.medium))
+                Text("For this project we need 27500, we already have 0.")
+                
+                NavigationLink(destination: DonateView(projectId: "4ae756ac-b37f-4651-b718-9d6b916b7f1e")) {
+                    Text("Donate now")
+                }
+                
+                Text("Overview")
+                    .font(Font.title.weight(.medium))
+                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie nunc scelerisque, suscipit metus feugiat, interdum augue. Nam dolor mauris, euismod sed lectus ut, hendrerit rutrum libero. Vestibulum facilisis quam rhoncus pharetra mattis. Nulla facilisi. Curabitur ex ligula, ornare vel ex sed, fringilla iaculis mauris.")
+                
+                Text("The current situation")
+                    .font(Font.title.weight(.medium))
+                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie nunc scelerisque, suscipit metus feugiat, interdum augue. Nam dolor mauris, euismod sed lectus ut, hendrerit rutrum libero. Vestibulum facilisis quam rhoncus pharetra mattis. Nulla facilisi. Curabitur ex ligula, ornare vel ex sed, fringilla iaculis mauris.")
+                
             }
-            
-        }.navigationTitle("Project \(project.nameOfProject)")
+        }.navigationTitle("Build a water pump")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: shareView) {
@@ -48,6 +51,6 @@ struct ProjectView: View {
 
 struct ProjectView_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectView(project: Project.testProject)
+        ProjectView()
     }
 }

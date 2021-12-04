@@ -9,13 +9,13 @@ import SwiftUI
 
 struct StoriesListView: View {
     @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
-    @State var stories: [Story] = Story.testStories
-//    @State var stories: [Story] = []
+//    @State var stories: [Story] = Story.testStories
+    @State var stories: [Story] = []
     
     var body: some View {
         ScrollView {
             VStack {
-                Text("Be surprised by the most unique, moving or telling stories of the Ikwambe foundation.\n\nRead the stories of the farmers and residents of Ikwambe.")
+                Text("Be surprised by the most unique, moving or telling stories of the Ikwambe foundation.\n\nRead their stories here")
                 
                 if (stories.isEmpty == false) {
                     ForEach(stories) { story in
@@ -33,8 +33,7 @@ struct StoriesListView: View {
                 }
             }.padding(.horizontal, 15)
             
-            
-        }.navigationTitle("Stories")
+        }.navigationTitle("Stories from Ikwambe")
     }
 }
 
