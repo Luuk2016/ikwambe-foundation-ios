@@ -22,8 +22,6 @@ struct StoryView: View {
                         .font(Font.headline.weight(.bold))
 
                     Text(story.description)
-
-
                 }.padding(.horizontal, 15)
 
                 VStack {
