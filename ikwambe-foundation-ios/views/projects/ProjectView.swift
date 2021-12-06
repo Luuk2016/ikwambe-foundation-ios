@@ -13,7 +13,6 @@ struct ProjectView: View {
             IkwambeHeader(title: "Build a water pump", image: "child-water")
             
             VStack(alignment: .leading, spacing: 15) {
-                
                 IkwambeProjectStatus()
 
                 Text("Overview")
@@ -40,6 +39,7 @@ struct ProjectView: View {
                 
             }.padding(.horizontal, 15)
         }.ignoresSafeArea(edges: .top)
+        .navigationBarHidden(true)
     }
     
     func shareView() {

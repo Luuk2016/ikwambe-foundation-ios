@@ -15,7 +15,11 @@ struct StoriesListView: View {
     var body: some View {
         ScrollView {
             VStack {
-                Text("Be surprised by the most unique, moving or telling stories of the Ikwambe foundation.\n\nRead their stories here")
+                IkwambeHeader(title: "Stories from Ikwambe", image: "child-water")
+            }
+            
+            VStack(alignment: .leading){
+                Text("Be surprised by the most unique, moving or telling stories of the Ikwambe foundation.\nRead their stories here.")
                 
                 if (stories.isEmpty == false) {
                     ForEach(stories) { story in
@@ -31,7 +35,8 @@ struct StoriesListView: View {
                 }
             }.padding(.horizontal, 15)
             
-        }.navigationTitle("Stories from Ikwambe")
+        }.ignoresSafeArea(edges: .top)
+        .navigationBarHidden(true)
     }
 }
 
