@@ -51,7 +51,7 @@ struct RegisterView: View {
             } .buttonStyle(BigBlueButtonStyle())
             
             Spacer()
-        }.navigationTitle("Signup")
+        }.navigationTitle("Register")
     }
 }
 

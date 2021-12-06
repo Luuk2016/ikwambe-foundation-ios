@@ -36,7 +36,6 @@ struct StoriesListView: View {
             }.padding(.horizontal, 15)
             
         }.ignoresSafeArea(edges: .top)
-        .navigationBarHidden(true)
     }
 }
 
