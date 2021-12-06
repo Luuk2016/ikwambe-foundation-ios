@@ -10,36 +10,36 @@ import SwiftUI
 struct ProjectView: View {
     var body: some View {
         ScrollView {
-            VStack(alignment: .center, spacing: 20) {
-                Text("Our current progression")
-                    .font(Font.title.weight(.medium))
-                Text("For this project we need 27500, we already have 0.")
+            IkwambeHeader(title: "Build a water pump", image: "child-water")
+            
+            VStack(alignment: .leading, spacing: 15) {
                 
-                NavigationLink(destination: DonateView(projectId: "4ae756ac-b37f-4651-b718-9d6b916b7f1e")) {
-                    Text("Donate now")
-                }
-                
+                IkwambeProjectStatus()
+
                 Text("Overview")
                     .font(Font.title.weight(.medium))
                 Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie nunc scelerisque, suscipit metus feugiat, interdum augue. Nam dolor mauris, euismod sed lectus ut, hendrerit rutrum libero. Vestibulum facilisis quam rhoncus pharetra mattis. Nulla facilisi. Curabitur ex ligula, ornare vel ex sed, fringilla iaculis mauris.")
-                
+
+                HStack {
+                    NavigationLink(destination: ProfileView()) {
+                        Text("Milestones")
+                    }.buttonStyle(SmallBlueButtonStyle())
+
+                    NavigationLink(destination: ProfileView()) {
+                        Text("Donations")
+                    }.buttonStyle(SmallBlueButtonStyle())
+                }
+
                 Text("The current situation")
                     .font(Font.title.weight(.medium))
                 Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie nunc scelerisque, suscipit metus feugiat, interdum augue. Nam dolor mauris, euismod sed lectus ut, hendrerit rutrum libero. Vestibulum facilisis quam rhoncus pharetra mattis. Nulla facilisi. Curabitur ex ligula, ornare vel ex sed, fringilla iaculis mauris.")
+
+                NavigationLink(destination: ProfileView()) {
+                    Text("Read more")
+                }.buttonStyle(SmallBlueButtonStyle())
                 
-            }
-        }.navigationTitle("Build a water pump")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: shareView) {
-                        Image(systemName: "square.and.arrow.up")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    }
-                }
-            }
-            .padding(.horizontal, 15)
-            .padding(.top, 15)
+            }.padding(.horizontal, 15)
+        }.ignoresSafeArea(edges: .top)
     }
     
     func shareView() {
