@@ -12,23 +12,30 @@ struct DonationConfirmed: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Thank your for donating")
-                .font(Font.title.weight(.medium)).padding(.bottom, 80)
+            VStack {
+                Text("Thank you for helping!")
+                    .font(Font.title.weight(.medium))
+                    .padding(.bottom, 25)
+                
+                Text("Your money will be used to\nsupport the build of the \nwater pump.")
+                    .font(Font.title2.weight(.light))
+
+            }.padding(.bottom, 70)
+                .multilineTextAlignment(.center)
             
-            Toggle("Stay up-to-date", isOn: $toggleValue)
-                .padding(.horizontal, 50)
+            Toggle("Keep me up-to-date", isOn: $toggleValue)
+                .padding(.bottom, 25)
            
-            Button("Share donation") {
+            Button("Spread the word") {
                 shareView()
-            }
+            }.buttonStyle(BigOrangeButtonStyle())
             
-            NavigationLink(destination: StoriesListView()) {
-                Text("Read about Ikwambe")
-            }
+            NavigationLink(destination: ContentView()) {
+                Text("Continue")
+            }.buttonStyle(BigBlueButtonStyle())
 
         }.navigationTitle("Donate")
-            .padding(.horizontal, 15)
-            .padding(.top, 150)
+            .padding(.horizontal, 50)
     }
     
     func shareView() {
