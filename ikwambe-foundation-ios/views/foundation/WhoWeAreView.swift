@@ -11,15 +11,17 @@ struct WhoWeAreView: View {
     var body: some View {
         ScrollView {
             VStack {
-                Text("The initiative to help out the villages of Ikwambe and Nangonji came from our own chairwoman, Feliciana.")
+                IkwambeHeader(title: "Who we are", image: "child-water")
                 
-                Text("Feliciana was born and raised in Ikwambe, therefor she has experienced the problems that exist in the village")
-                
-                Text("Our board members")
-                
-            }.padding(.horizontal, 15)
-            
-        }.navigationTitle("Who we are")
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("The initiative to help out the villages of Ikwambe and Nangonji came from our own chairwoman, Feliciana.\n\nFeliciana was born and raised in Ikwambe, therefor she has experienced the problems that exist in the village")
+
+                    Text("Our board members")
+                        .font(Font.title.weight(.medium))
+                    
+                }.padding(.horizontal, 8)
+            }
+        }.ignoresSafeArea(edges: .top)
     }
 }
 
