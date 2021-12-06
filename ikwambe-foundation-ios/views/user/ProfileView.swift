@@ -17,14 +17,14 @@ struct ProfileView: View {
                 Text("Welcome back!")
                     .font(.title3)
             } else {
-                HStack {
+                HStack(alignment: .center) {
                     NavigationLink(destination: LoginView()) {
                         Text("Login")
-                    }
+                    }.buttonStyle(SmallBlueButtonStyle())
                     
                     NavigationLink(destination: RegisterView()) {
                         Text("Register")
-                    }
+                    }.buttonStyle(SmallBlueButtonStyle())
                 }
             }
             

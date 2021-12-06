@@ -14,11 +14,12 @@ struct StoryCell: View {
     
     var body: some View {
         
-        VStack {
+        VStack(alignment: .center, spacing: 10) {
             if let storyImage = storyImage {
                 Image(uiImage: storyImage)
                     .resizable()
                     .scaledToFit()
+                    .cornerRadius(5)
             } else {
                 ProgressView("Loading image")
                     .onAppear {
@@ -29,8 +30,19 @@ struct StoryCell: View {
             }
             
             Text(story.title)
+                .font(.title)
             Text("A story by \(story.author)")
-        }
+                .font(.title3)
+                .fontWeight(.light)
+            
+            Text(story.summary)
+            
+            NavigationLink(destination: StoryView(story: story)) {
+                Text("Read more")
+            }.buttonStyle(SmallBlueButtonStyle())
+                .padding(.bottom, 20)
+            
+        }.multilineTextAlignment(.center)
     }
 }
 

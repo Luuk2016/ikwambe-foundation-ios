@@ -18,18 +18,11 @@ struct LoginView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            TextField("Email address", text: $email)
-                .padding()
-                .cornerRadius(5.0)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal)
-
-            SecureField("Password", text: $password)
-                .padding()
-                .cornerRadius(5.0)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal)
+        VStack(spacing: 10) {
+    
+            IkwambeTextField(title: "Email address", field: $email)
+            
+            IkwambeSecureField(title: "Password", field: $password)
             
             Button("Login", action: {
                 ikwambeAPI.login(email: email, password: password) { (isSuccess) in
@@ -39,10 +32,11 @@ struct LoginView: View {
                     }
                 }
             }).disabled(formValid == false)
+                .buttonStyle(BigOrangeButtonStyle())
             
             NavigationLink(destination: RegisterView()) {
-                Text("Don't have an account?")
-            }
+                Text("Register")
+            }.buttonStyle(BigBlueButtonStyle())
             
             Spacer()
         }.navigationTitle("Login")

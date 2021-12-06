@@ -9,8 +9,8 @@ import SwiftUI
 
 struct StoriesListView: View {
     @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
-//    @State var stories: [Story] = Story.testStories
-    @State var stories: [Story] = []
+    @State var stories: [Story] = Story.testStories
+//    @State var stories: [Story] = []
     
     var body: some View {
         ScrollView {
@@ -19,9 +19,7 @@ struct StoriesListView: View {
                 
                 if (stories.isEmpty == false) {
                     ForEach(stories) { story in
-                        NavigationLink(destination: StoryView(story: story)) {
-                            StoryCell(story: story)
-                        }
+                        StoryCell(story: story)
                     }
                 } else {
                     ProgressView("Loading stories")

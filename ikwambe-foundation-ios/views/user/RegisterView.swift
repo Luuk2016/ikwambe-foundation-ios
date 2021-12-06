@@ -22,36 +22,17 @@ struct RegisterView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            TextField("First name", text: $firstName)
-                .padding()
-                .cornerRadius(5.0)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal)
+        VStack(spacing: 10) {
             
-            TextField("Last name", text: $lastName)
-                .padding()
-                .cornerRadius(5.0)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal)
+            IkwambeTextField(title: "First name", field: $firstName)
             
-            TextField("Email address", text: $email)
-                .padding()
-                .cornerRadius(5.0)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal)
+            IkwambeTextField(title: "Last name", field: $lastName)
 
-            SecureField("Password", text: $password)
-                .padding()
-                .cornerRadius(5.0)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal)
-            
-            SecureField("Confirm your password", text: $confirmPassword)
-                .padding()
-                .cornerRadius(5.0)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal)
+            IkwambeTextField(title: "Email address", field: $email)
+
+            IkwambeSecureField(title: "Password", field: $password)
+
+            IkwambeSecureField(title: "Confirm your password", field: $confirmPassword)
             
             Button("Register", action: {
                 ikwambeAPI.register(firstName: firstName, lastName: lastName, email: email, password: password) { (isSuccess) in
@@ -63,10 +44,11 @@ struct RegisterView: View {
                 }
                 isFailureAlertPresented = true
             }).disabled(formValid == false)
+                .buttonStyle(BigOrangeButtonStyle())
             
             NavigationLink(destination: LoginView()) {
-                Text("Already have an account?")
-            }
+                Text("Login")
+            } .buttonStyle(BigBlueButtonStyle())
             
             Spacer()
         }.navigationTitle("Signup")

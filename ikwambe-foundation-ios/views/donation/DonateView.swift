@@ -58,7 +58,7 @@ struct DonateView: View {
                         ikwambeAPI.createDonation(userId: "", projectId: projectId, amount: amount) { (transactionResponse) in
                             openURL(URL(string: transactionResponse.link)!)
                         }
-                    }
+                    }.buttonStyle(BigOrangeButtonStyle())
                 }
                 
             }.padding(70)
