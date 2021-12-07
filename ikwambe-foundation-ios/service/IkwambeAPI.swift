@@ -74,7 +74,7 @@ class IkwambeAPI: ObservableObject {
     
     func register(firstName: String, lastName: String, email: String, password: String, completionHandler:
     @escaping (Bool) -> ()) {
-        let data = RegiserRequest(
+        let data = RegisterRequest(
             firstName: firstName,
             lastName: lastName,
             email: email,
