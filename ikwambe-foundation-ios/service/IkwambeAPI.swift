@@ -74,7 +74,7 @@ class IkwambeAPI: ObservableObject {
     
     func register(firstName: String, lastName: String, email: String, password: String, completionHandler:
     @escaping (Bool) -> ()) {
-        let data = SignupRequest(
+        let data = RegiserRequest(
             firstName: firstName,
             lastName: lastName,
             email: email,
@@ -87,7 +87,7 @@ class IkwambeAPI: ObservableObject {
             case .success(let data):
                 if (response.response?.statusCode == 200) {
                     do {
-                        let result = try JSONDecoder().decode(SignupResponse.self, from: data!)
+                        let result = try JSONDecoder().decode(RegisterResponse.self, from: data!)
                         
                         if (result.userId != "") {
                             completionHandler(true)

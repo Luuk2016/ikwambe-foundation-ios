@@ -23,7 +23,6 @@ struct RegisterView: View {
     
     var body: some View {
         VStack(spacing: 10) {
-            
             IkwambeTextField(title: "First name", field: $firstName)
             
             IkwambeTextField(title: "Last name", field: $lastName)
