@@ -12,8 +12,8 @@ import UIKit
 
 class IkwambeAPI: ObservableObject {
     @Published var isAuthenticated: Bool = false
-    static let shared = IkwambeAPI()
-    private let keychain = Keychain()
+    static let shared: IkwambeAPI = IkwambeAPI()
+    private let keychain: Keychain = Keychain()
     private var accessTokenKeychainKey: String = "accessToken"
     private let baseURL: String = "https://ikwambefoundation.azurewebsites.net/api"
     
@@ -43,7 +43,7 @@ class IkwambeAPI: ObservableObject {
             password: password
         )
                 
-        AF.request("\(baseURL)/Login", method: .post, parameters: data, encoder: JSONParameterEncoder.default).response { response in
+        AF.request("\(baseURL)/login", method: .post, parameters: data, encoder: JSONParameterEncoder.default).response { response in
             switch response.result {
             case .success(let data):
                 if (response.response?.statusCode == 200) {

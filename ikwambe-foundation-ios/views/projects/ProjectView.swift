@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProjectView: View {
+    let images: [String] = ["child-water", "child-water", "child-water",]
+    
     var body: some View {
         ScrollView {
             IkwambeHeader(title: "Build a water pump", image: "child-water")
@@ -31,7 +33,9 @@ struct ProjectView: View {
 
                 Text("The current situation")
                     .font(Font.title.weight(.medium))
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie nunc scelerisque, suscipit metus feugiat, interdum augue. Nam dolor mauris, euismod sed lectus ut, hendrerit rutrum libero. Vestibulum facilisis quam rhoncus pharetra mattis. Nulla facilisi. Curabitur ex ligula, ornare vel ex sed, fringilla iaculis mauris.")
+                
+                IkwambeProjectImageCarousel(images: images)
+               
 
                 NavigationLink(destination: ProfileView()) {
                     Text("Read more")

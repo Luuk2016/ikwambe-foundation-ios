@@ -18,7 +18,6 @@ struct ContentView: View {
                 IkwambeHeader(title: "Ikwambe Foundation", image: "child-water")
                 
                 VStack(alignment: .leading, spacing: 15) {
-                    
                     VStack(alignment: .leading, spacing: 0) {
                         Text("Help to build a water pump")
                             .font(Font.title.weight(.medium))
@@ -32,16 +31,9 @@ struct ContentView: View {
 
                     Text("Stories from Ikwambe")
                         .font(Font.title.weight(.medium))
-
-                    HStack {
-                        NavigationLink(destination: StoriesListView()) {
-                            Text("Stories from Ikwambe")
-                        }.buttonStyle(SmallOrangeButtonStyle())
-
-                        NavigationLink(destination: WhoWeAreView()) {
-                            Text("Who we are")
-                        }.buttonStyle(SmallOrangeButtonStyle())
-                    }
+                    
+                    IkwambeHomeCarousel()
+                    
                 }.padding(.horizontal, 15)
             }
         }.ignoresSafeArea(edges: .top)
