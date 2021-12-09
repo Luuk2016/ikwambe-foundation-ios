@@ -23,17 +23,17 @@ struct RegisterView: View {
     
     var body: some View {
         VStack(spacing: 10) {
-            IkwambeTextField(title: "First name", field: $firstName)
+            IkwambeTextField(title: NSLocalizedString("first-name", comment: ""), field: $firstName)
             
-            IkwambeTextField(title: "Last name", field: $lastName)
+            IkwambeTextField(title: NSLocalizedString("last-name", comment: ""), field: $lastName)
 
-            IkwambeTextField(title: "Email address", field: $email)
+            IkwambeTextField(title: NSLocalizedString("email", comment: ""), field: $email)
 
-            IkwambeSecureField(title: "Password", field: $password)
+            IkwambeSecureField(title: NSLocalizedString("password", comment: ""), field: $password)
 
-            IkwambeSecureField(title: "Confirm your password", field: $confirmPassword)
+            IkwambeSecureField(title: NSLocalizedString("confirm-password", comment: ""), field: $confirmPassword)
             
-            Button("Register", action: {
+            Button(NSLocalizedString("register", comment: ""), action: {
                 ikwambeAPI.register(firstName: firstName, lastName: lastName, email: email, password: password) { (isSuccess) in
                     if (isSuccess) {
                         print("success!")
@@ -46,11 +46,11 @@ struct RegisterView: View {
                 .buttonStyle(BigOrangeButtonStyle())
             
             NavigationLink(destination: LoginView()) {
-                Text("Login")
+                Text(NSLocalizedString("login", comment: ""))
             } .buttonStyle(BigBlueButtonStyle())
             
             Spacer()
-        }.navigationTitle("Register")
+        }.navigationTitle(NSLocalizedString("register", comment: ""))
     }
 }
 

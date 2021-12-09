@@ -30,16 +30,16 @@ struct IkwambeProjectStatus: View {
                         }.cornerRadius(45.0)
                     }.frame(height: 15)
                     
-                    Text("X people are already helping")
+                    Text("X " + NSLocalizedString("x-people-are-already-helping", comment: ""))
                         .font(.subheadline)
                 }
                 
                 NavigationLink(destination: DonateView(projectId: project.id)) {
-                    Text("Help now")
+                    Text(NSLocalizedString("help-now", comment: ""))
                 }.buttonStyle(SmallOrangeButtonStyle())
             }.padding(.top, 10)
         } else {
-            ProgressView("Loading project")
+            ProgressView(NSLocalizedString("loading-projects", comment: ""))
             .onAppear {
                 ikwambeAPI.getProjectById(projectId: "4ae756ac-b37f-4651-b718-9d6b916b7f1e"){ (project) in
                     self.project = project

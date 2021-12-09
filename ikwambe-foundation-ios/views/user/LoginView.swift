@@ -20,11 +20,11 @@ struct LoginView: View {
     var body: some View {
         VStack(spacing: 10) {
     
-            IkwambeTextField(title: "Email address", field: $email)
+            IkwambeTextField(title: NSLocalizedString("email", comment: ""), field: $email)
             
-            IkwambeSecureField(title: "Password", field: $password)
+            IkwambeSecureField(title: NSLocalizedString("password", comment: ""), field: $password)
             
-            Button("Login", action: {
+            Button(NSLocalizedString("login", comment: ""), action: {
                 ikwambeAPI.login(email: email, password: password) { (isSuccess) in
                     if (isSuccess == false) {
                         print("failure!")
@@ -35,13 +35,13 @@ struct LoginView: View {
                 .buttonStyle(BigOrangeButtonStyle())
             
             NavigationLink(destination: RegisterView()) {
-                Text("Register")
+                Text(NSLocalizedString("register", comment: ""))
             }.buttonStyle(BigBlueButtonStyle())
             
             Spacer()
         }.navigationTitle("Login")
         .alert(isPresented: $isFailureAlertPresented) {
-            Alert(title: Text("Message"), message: Text("Login has failed, please try again"))
+            Alert(title: Text(NSLocalizedString("message", comment: "")), message: Text(NSLocalizedString("login-failed", comment: "")))
         }
     }
 }

@@ -12,33 +12,33 @@ struct ProjectView: View {
     
     var body: some View {
         ScrollView {
-            IkwambeHeader(title: "Build a water pump", image: "child-water")
+            IkwambeHeader(title: NSLocalizedString("build-a-water-pump", comment: ""), image: "child-water")
             
             VStack(alignment: .leading, spacing: 15) {
                 IkwambeProjectStatus()
 
-                Text("Overview")
+                Text(NSLocalizedString("overview", comment: ""))
                     .font(Font.title.weight(.medium))
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie nunc scelerisque, suscipit metus feugiat, interdum augue. Nam dolor mauris, euismod sed lectus ut, hendrerit rutrum libero. Vestibulum facilisis quam rhoncus pharetra mattis. Nulla facilisi. Curabitur ex ligula, ornare vel ex sed, fringilla iaculis mauris.")
+                Text(NSLocalizedString("project-overview", comment: ""))
 
                 HStack {
                     NavigationLink(destination: ProfileView()) {
-                        Text("Milestones")
+                        Text(NSLocalizedString("milestones", comment: ""))
                     }.buttonStyle(SmallBlueButtonStyle())
 
                     NavigationLink(destination: ProfileView()) {
-                        Text("Donations")
+                        Text(NSLocalizedString("donations", comment: ""))
                     }.buttonStyle(SmallBlueButtonStyle())
                 }
 
-                Text("The current situation")
+                Text(NSLocalizedString("current-situation", comment: ""))
                     .font(Font.title.weight(.medium))
                 
                 IkwambeProjectImageCarousel(images: images)
                
 
                 NavigationLink(destination: ProfileView()) {
-                    Text("Read more")
+                    Text(NSLocalizedString("read-more", comment: ""))
                 }.buttonStyle(SmallBlueButtonStyle())
                 
             }.padding(.horizontal, 15)

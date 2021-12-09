@@ -15,18 +15,18 @@ struct StoriesListView: View {
     var body: some View {
         ScrollView {
             VStack {
-                IkwambeHeader(title: "Stories from Ikwambe", image: "child-water")
+                IkwambeHeader(title: NSLocalizedString("stories-from-ikwambe", comment: ""), image: "child-water")
             }
             
             VStack(alignment: .leading){
-                Text("Be surprised by the most unique, moving or telling stories of the Ikwambe foundation.\nRead their stories here.")
+                Text(NSLocalizedString("stories-from-ikwambe-text", comment: ""))
                 
                 if (stories.isEmpty == false) {
                     ForEach(stories) { story in
                         StoryCell(story: story)
                     }
                 } else {
-                    ProgressView("Loading stories")
+                    ProgressView(NSLocalizedString("loading-stories", comment: ""))
                     .onAppear {
                         ikwambeAPI.getStories(){ (stories) in
                             self.stories = stories

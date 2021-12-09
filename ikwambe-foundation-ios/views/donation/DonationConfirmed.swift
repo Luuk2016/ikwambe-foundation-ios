@@ -13,28 +13,28 @@ struct DonationConfirmed: View {
     var body: some View {
         VStack(spacing: 20) {
             VStack {
-                Text("Thank you for helping!")
+                Text(NSLocalizedString("thank-you-for-helping", comment: ""))
                     .font(Font.title.weight(.medium))
                     .padding(.bottom, 25)
                 
-                Text("Your money will be used to\nsupport the build of the \nwater pump.")
+                Text(NSLocalizedString("your-money", comment: ""))
                     .font(Font.title2.weight(.light))
 
             }.padding(.bottom, 70)
                 .multilineTextAlignment(.center)
             
-            Toggle("Keep me up-to-date", isOn: $toggleValue)
+            Toggle(NSLocalizedString("keep-me-up-to-date", comment: ""), isOn: $toggleValue)
                 .padding(.bottom, 25)
            
-            Button("Spread the word") {
+            Button(NSLocalizedString("spread-the-word", comment: "")) {
                 shareView()
             }.buttonStyle(BigOrangeButtonStyle())
             
             NavigationLink(destination: ContentView()) {
-                Text("Continue")
+                Text(NSLocalizedString("continue", comment: ""))
             }.buttonStyle(BigBlueButtonStyle())
 
-        }.navigationTitle("Donate")
+        }.navigationTitle(NSLocalizedString("donate", comment: ""))
             .padding(.horizontal, 50)
     }
     

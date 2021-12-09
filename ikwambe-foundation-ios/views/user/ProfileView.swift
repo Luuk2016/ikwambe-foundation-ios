@@ -14,41 +14,41 @@ struct ProfileView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             if ikwambeAPI.isAuthenticated {
-                Text("Welcome back!")
+                Text(NSLocalizedString("welcome-back", comment: ""))
                     .font(.title3)
             } else {
                 HStack(alignment: .center) {
                     NavigationLink(destination: LoginView()) {
-                        Text("Login")
+                        Text(NSLocalizedString("login", comment: ""))
                     }.buttonStyle(SmallBlueButtonStyle())
                     
                     NavigationLink(destination: RegisterView()) {
-                        Text("Register")
+                        Text(NSLocalizedString("register", comment: ""))
                     }.buttonStyle(SmallBlueButtonStyle())
                 }
             }
             
             if !ikwambeAPI.isAuthenticated {
-                Text("Do I need an account?")
+                Text(NSLocalizedString("do-i-need-account", comment: ""))
                     .font(.title)
                 
-                Text("An account is fully optional. \nWith an account you can keep track of your donations.")
+                Text(NSLocalizedString("account-explanation", comment: ""))
             }
             
-            Text("Stay up-to-date")
+            Text(NSLocalizedString("stay-up-to-date", comment: ""))
                 .font(.title)
             
-            Toggle("Receive push notifications", isOn: $value)
+            Toggle(NSLocalizedString("receive-notifications", comment: ""), isOn: $value)
             
             if ikwambeAPI.isAuthenticated {
-                Text("My donations")
+                Text(NSLocalizedString("my-donations", comment: ""))
                     .font(.title)
                 
-                Text("No donations have been found")
+                Text(NSLocalizedString("no-donations-found", comment: ""))
             }
             
             Spacer()
-        }.navigationTitle("Profile")
+        }.navigationTitle(NSLocalizedString("profile", comment: ""))
             .padding(.horizontal, 15)
             .padding(.top, 15)
         .toolbar {
@@ -57,7 +57,7 @@ struct ProfileView: View {
                     Button(action: {
                         ikwambeAPI.logout()
                     }) {
-                        Text("Logout")
+                        Text(NSLocalizedString("logout", comment: ""))
                     }
                 }
             }

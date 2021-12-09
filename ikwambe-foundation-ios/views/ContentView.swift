@@ -19,17 +19,17 @@ struct ContentView: View {
                 
                 VStack(alignment: .leading, spacing: 15) {
                     VStack(alignment: .leading, spacing: 0) {
-                        Text("Help to build a water pump")
+                        Text(NSLocalizedString("help-to-build", comment: ""))
                             .font(Font.title.weight(.medium))
 
                         IkwambeProjectStatus()
                     }
                     
-                    Text("By making a donation to the foundation, you can help us with building a water pump.")
+                    Text(NSLocalizedString("by-making-a-donation", comment: ""))
 
-                    Text("At this moment, drinking water isn't available in the village of ikwambe")
+                    Text(NSLocalizedString("at-this-moment", comment: ""))
 
-                    Text("Stories from Ikwambe")
+                    Text(NSLocalizedString("stories-from-ikwambe", comment: ""))
                         .font(Font.title.weight(.medium))
                     
                     IkwambeHomeCarousel()

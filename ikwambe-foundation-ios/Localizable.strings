@@ -1,0 +1,107 @@
+/* 
+  Localizable.strings
+  ikwambe-foundation-ios
+
+  Created by Luuk Kenselaar on 09/12/2021.
+  
+*/
+
+"help-to-build" = "Help to build a water pump";
+
+"by-making-a-donation" = "By making a donation to the foundation, you can help us with building a water pump.";
+
+"at-this-moment" = "At this moment, drinking water isn't available in the village of ikwambe";
+
+"stories-from-ikwambe" = "Stories from Ikwambe";
+
+"first-name" = "First name";
+
+"last-name" = "Last name";
+
+"email" = "Email address";
+
+"password" = "Password";
+
+"confirm-password" = "Confirm your password";
+
+"register" = "Register";
+
+"login" = "Login";
+
+"message" = "Message";
+
+"login-failed" = "Login has failed, please try again";
+
+"welcome-back" = "Welcome back!";
+
+"do-i-need-account" = "Do i need an account?";
+
+"account-explanation" = "An account is fully optional. \nWith an account you can keep track of your donations.";
+
+"stay-up-to-date" = "Stay up-to-date";
+
+"receive-notifications" = "Receive push notifications";
+
+"my-donations" = "My donations";
+
+"no-donations-found" = "No donations have been found";
+
+"profile" = "Profile";
+
+"logout" = "Logout";
+
+"build-a-water-pump" = "Build a water pump";
+
+"overview" = "Overview";
+
+"project-overview" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie nunc scelerisque, suscipit metus feugiat, interdum augue. Nam dolor mauris, euismod sed lectus ut, hendrerit rutrum libero. Vestibulum facilisis quam rhoncus pharetra mattis. Nulla facilisi. Curabitur ex ligula, ornare vel ex sed, fringilla iaculis mauris.";
+
+"milestones" = "Milestones";
+
+"donations" = "Donations";
+
+"current-situation" = "The current situation";
+
+"read-more" = "Read more";
+
+"thank-your-for-helping" = "Thank you for helping";
+
+"your-money" = "Your money will be used to\nsupport the build of the \nwater pump.";
+
+"keep-me-up-to-date" = "Keep me up-to-date";
+
+"spread-the-word" = "Spread the word";
+
+"continue" = "Continue";
+
+"donate" = "Donate";
+ 
+"by-donating" = "By donating, you will help to bring clean water to Ikwambe. Please select an amount below:";
+
+"click-to-pay" = "Click the button below to pay";
+
+"who-we-are" = "Who we are";
+
+"who-we-are-text" = "The initiative to help out the villages of Ikwambe and Nangonji came from our own chairwoman, Feliciana.\n\nFeliciana was born and raised in Ikwambe, therefor she has experienced the problems that exist in the village";
+
+"our-board-members" = "Our board members";
+
+"loading-image" = "Loading image";
+
+"a-story-by" = "A story by ";
+
+"stories-from-ikwambe" = "Stories from Ikwambe";
+
+"stories-from-ikwambe-text" = "Be surprised by the most unique, moving or telling stories of the Ikwambe foundation.\nRead their stories here.";
+
+"loading-stories" = "Loading stories";
+
+"x-people-are-already-helping" = "people are already helping";
+
+"help-now" = "Help now";
+
+"loading-project" = "Loading project";
+
+"the-people-behind-the-foundation" = "The people behind the foundation";
+
+

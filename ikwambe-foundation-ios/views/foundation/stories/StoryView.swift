@@ -25,7 +25,7 @@ struct StoryView: View {
                 }.padding(.horizontal, 15)
 
                 VStack {
-                    Text("A story by \(story.author)")
+                    Text(NSLocalizedString("a-story-by", comment: "") + story.author)
                         .font(Font.headline.weight(.bold))
                 }
             }

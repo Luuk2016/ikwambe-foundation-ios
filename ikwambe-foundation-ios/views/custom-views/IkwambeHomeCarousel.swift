@@ -21,11 +21,11 @@ struct IkwambeHomeCarousel: View {
                         }.padding()
                         
                         VStack(alignment: .center) {
-                            Text("Stories from\nIkwambe")
+                            Text(NSLocalizedString("stories-from-ikwambe", comment: ""))
                                 .multilineTextAlignment(.center)
                             
                             NavigationLink(destination: StoriesListView()) {
-                                Text("Read more")
+                                Text(NSLocalizedString("read-more", comment: ""))
                             }.buttonStyle(SmallOrangeButtonStyle())
                         }.padding()
 
@@ -42,11 +42,11 @@ struct IkwambeHomeCarousel: View {
                         }.padding()
                         
                         VStack(alignment: .center) {
-                            Text("The people behind the foundation")
+                            Text(NSLocalizedString("the-people-behind-the-foundation", comment: ""))
                                 .multilineTextAlignment(.center)
                             
                             NavigationLink(destination: WhoWeAreView()) {
-                                Text("Read more")
+                                Text(NSLocalizedString("read-more", comment: ""))
                             }.buttonStyle(SmallOrangeButtonStyle())
                         }.padding()
 

@@ -11,12 +11,12 @@ struct WhoWeAreView: View {
     var body: some View {
         ScrollView {
             VStack {
-                IkwambeHeader(title: "Who we are", image: "child-water")
+                IkwambeHeader(title: NSLocalizedString("who-we-are", comment: ""), image: "child-water")
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("The initiative to help out the villages of Ikwambe and Nangonji came from our own chairwoman, Feliciana.\n\nFeliciana was born and raised in Ikwambe, therefor she has experienced the problems that exist in the village")
+                    Text(NSLocalizedString("who-we-are-text", comment: ""))
 
-                    Text("Our board members")
+                    Text(NSLocalizedString("our-board-members", comment: ""))
                         .font(Font.title.weight(.medium))
                     
                 }.padding(.horizontal, 8)

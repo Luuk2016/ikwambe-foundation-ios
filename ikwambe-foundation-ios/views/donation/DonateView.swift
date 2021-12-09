@@ -16,7 +16,8 @@ struct DonateView: View {
     
     var body: some View {
         VStack {
-            Text("By donating, you will help to bring clean water to Ikwambe. Please select an amount below:").multilineTextAlignment(.center)
+            Text(NSLocalizedString("by-donating", comment: ""))
+                .multilineTextAlignment(.center)
             
             VStack(spacing: 50) {
                 HStack(spacing: 30) {
@@ -46,9 +47,9 @@ struct DonateView: View {
                         amount = 100.00
                     }
                 }
-                
+                                
                 if (amount != 0) {
-                    Text("Click the button below to pay")
+                    Text(NSLocalizedString("click-to-pay", comment: ""))
                     
                     NavigationLink(destination: DonationConfirmed()) {
                         Text("Donation confirmed")
@@ -64,7 +65,7 @@ struct DonateView: View {
             }.padding(70)
             
             Spacer()
-        }.navigationTitle("Donate")
+        }.navigationTitle(NSLocalizedString("donate", comment: ""))
     }
 }
 
