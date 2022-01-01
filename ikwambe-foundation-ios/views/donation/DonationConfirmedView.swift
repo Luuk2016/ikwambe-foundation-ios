@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DonationConfirmed: View {
+struct DonationConfirmedView: View {
     @State private var toggleValue: Bool = false
     
     var body: some View {
@@ -47,6 +47,6 @@ struct DonationConfirmed: View {
 
 struct DonationConfirmed_Previews: PreviewProvider {
     static var previews: some View {
-        DonationConfirmed()
+        DonationConfirmedView()
     }
 }

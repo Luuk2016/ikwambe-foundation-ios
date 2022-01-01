@@ -39,7 +39,7 @@ struct IkwambeProjectStatus: View {
                 }.buttonStyle(SmallOrangeButtonStyle())
             }.padding(.top, 10)
         } else {
-            ProgressView(NSLocalizedString("loading-projects", comment: ""))
+            ProgressView(NSLocalizedString("loading-project", comment: ""))
             .onAppear {
                 ikwambeAPI.getProjectById(projectId: "4ae756ac-b37f-4651-b718-9d6b916b7f1e"){ (project) in
                     self.project = project

@@ -51,7 +51,7 @@ struct DonateView: View {
                 if (amount != 0) {
                     Text(NSLocalizedString("click-to-pay", comment: ""))
                     
-                    NavigationLink(destination: DonationConfirmed()) {
+                    NavigationLink(destination: DonateSummaryView()) {
                         Text("Donation confirmed")
                     }
                     

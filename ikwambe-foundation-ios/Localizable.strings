@@ -64,7 +64,7 @@
 
 "read-more" = "Read more";
 
-"thank-your-for-helping" = "Thank you for helping";
+"thank-you-for-helping" = "Thank you for helping";
 
 "your-money" = "Your money will be used to\nsupport the build of the \nwater pump.";
 
@@ -75,7 +75,17 @@
 "continue" = "Continue";
 
 "donate" = "Donate";
- 
+
+"summary" = "Summary";
+
+"you-donated" = "You donated";
+
+"leave-a-message" = "Leave a message behind (optional)";
+
+"your-name" = "Your name";
+
+"your-message" = "Your message";
+
 "by-donating" = "By donating, you will help to bring clean water to Ikwambe. Please select an amount below:";
 
 "click-to-pay" = "Click the button below to pay";
