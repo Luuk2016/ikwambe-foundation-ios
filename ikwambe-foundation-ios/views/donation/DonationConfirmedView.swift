@@ -35,7 +35,8 @@ struct DonationConfirmedView: View {
             }.buttonStyle(BigBlueButtonStyle())
 
         }.navigationTitle(NSLocalizedString("donate", comment: ""))
-            .padding(.horizontal, 50)
+        .padding(.horizontal, 50)
+        .navigationBarBackButtonHidden(true)
     }
     
     func shareView() {

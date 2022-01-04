@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct DonateSummaryView: View {
-    var amount: Double = 0.00
+struct DonationSummaryView: View {
+    @State var amount: Double
     @State private var name: String = ""
     @State private var message: String = ""
     
@@ -25,7 +25,7 @@ struct DonateSummaryView: View {
                     Text("Ikwambe water pump")
                         .font(.title2)
                                         
-                    Text(NSLocalizedString("you-donated", comment: "") + " € \(amount)")
+                    Text(NSLocalizedString("you-donated", comment: "") + " € \(amount)0")
                 }
             }
             
@@ -46,12 +46,13 @@ struct DonateSummaryView: View {
                         
             Spacer()
         }.navigationTitle(NSLocalizedString("summary", comment: ""))
-            .padding(.horizontal, 15)
+        .padding(.horizontal, 15)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 struct DonateSummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        DonateSummaryView()
+        DonationSummaryView(amount: 0.00)
     }
 }
