@@ -14,8 +14,9 @@ struct IkwambeHomeCarousel: View {
                 HStack {
                     HStack(spacing: 0) {
                         VStack(alignment: .center) {
-                            Image("child-water")
+                            Image("ikwambe-stories")
                                 .resizable()
+                                .aspectRatio(contentMode: .fill)
                                 .frame(width: 157, height: 145, alignment: .center)
                                 .cornerRadius(10)
                         }.padding()
@@ -35,8 +36,9 @@ struct IkwambeHomeCarousel: View {
                     
                     HStack(spacing: 0) {
                         VStack(alignment: .center) {
-                            Image("child-water")
+                            Image("people-behind-the-foundation")
                                 .resizable()
+                                .aspectRatio(contentMode: .fill)
                                 .frame(width: 157, height: 145, alignment: .center)
                                 .cornerRadius(10)
                         }.padding()

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IkwambeProjectImageCarousel: View {
+struct IkwambeImageCarousel: View {
     let images: [String]
     
     var body: some View {
@@ -16,10 +16,14 @@ struct IkwambeProjectImageCarousel: View {
                 HStack {
                     ForEach(images, id: \.self) { image in
                         HStack(spacing: 15) {
-                            Image(image)
-                                .resizable()
-                                .frame(width: 200, height: 200, alignment: .center)
-                                .cornerRadius(10)
+                            VStack {
+                                Image(image)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 175, height: 175, alignment: .center)
+                                    .cornerRadius(10)
+                            }
+                            
                         }.padding(.trailing, 10)
                     }
                 }

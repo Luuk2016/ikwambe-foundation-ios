@@ -23,7 +23,7 @@ struct StoryCell: View {
             } else {
                 ProgressView(NSLocalizedString("loading-image", comment: ""))
                     .onAppear {
-                        ikwambeAPI.getImage(imageURL: story.imageURL) { (image) in
+                        ikwambeAPI.getImage(imageURL: story.storyImages[0].imageLink) { (image) in
                             self.storyImage = image
                         }
                     }

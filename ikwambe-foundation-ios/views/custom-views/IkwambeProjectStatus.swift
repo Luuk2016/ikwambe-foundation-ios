@@ -30,11 +30,11 @@ struct IkwambeProjectStatus: View {
                         }.cornerRadius(45.0)
                     }.frame(height: 15)
                     
-                    Text("X " + NSLocalizedString("x-people-are-already-helping", comment: ""))
+                    Text("\(project.totalNumbOfDonators) " + NSLocalizedString("x-people-are-already-helping", comment: ""))
                         .font(.subheadline)
                 }
                 
-                NavigationLink(destination: DonateView(projectId: project.id)) {
+                NavigationLink(destination: DonationView(projectId: project.id)) {
                     Text(NSLocalizedString("help-now", comment: ""))
                 }.buttonStyle(SmallOrangeButtonStyle())
             }.padding(.top, 10)

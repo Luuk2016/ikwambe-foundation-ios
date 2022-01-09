@@ -12,7 +12,7 @@ struct ProjectView: View {
     
     var body: some View {
         ScrollView {
-            IkwambeHeader(title: NSLocalizedString("build-a-water-pump", comment: ""), image: "child-water")
+            IkwambeHeader(title: NSLocalizedString("build-a-water-pump", comment: ""), image: "child-water-2")
             
             VStack(alignment: .leading, spacing: 15) {
                 IkwambeProjectStatus()
@@ -22,22 +22,21 @@ struct ProjectView: View {
                 Text(NSLocalizedString("project-overview", comment: ""))
 
                 HStack {
-                    NavigationLink(destination: ProfileView()) {
+                    NavigationLink(destination: ProjectMilestonesView()) {
                         Text(NSLocalizedString("milestones", comment: ""))
                     }.buttonStyle(SmallBlueButtonStyle())
 
-                    NavigationLink(destination: ProfileView()) {
+                    NavigationLink(destination: DonationsOverview()) {
                         Text(NSLocalizedString("donations", comment: ""))
                     }.buttonStyle(SmallBlueButtonStyle())
                 }
 
-                Text(NSLocalizedString("current-situation", comment: ""))
+                Text(NSLocalizedString("the-current-situation", comment: ""))
                     .font(Font.title.weight(.medium))
                 
-                IkwambeProjectImageCarousel(images: images)
-               
+                IkwambeImageCarousel(images: images)
 
-                NavigationLink(destination: ProfileView()) {
+                NavigationLink(destination: CurrentSituationView()) {
                     Text(NSLocalizedString("read-more", comment: ""))
                 }.buttonStyle(SmallBlueButtonStyle())
                 

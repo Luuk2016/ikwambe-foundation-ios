@@ -58,9 +58,13 @@
 
 "milestones" = "Milestones";
 
+"project-milestones" = "Project milestones";
+
 "donations" = "Donations";
 
-"current-situation" = "The current situation";
+"the-current-situation" = "The current situation";
+
+"current-situation" = "Current situation";
 
 "read-more" = "Read more";
 

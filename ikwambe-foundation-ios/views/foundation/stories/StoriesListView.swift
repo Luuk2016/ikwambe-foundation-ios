@@ -9,16 +9,16 @@ import SwiftUI
 
 struct StoriesListView: View {
     @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
-    @State var stories: [Story] = Story.testStories
-//    @State var stories: [Story] = []
+//    @State var stories: [Story] = Story.testStories
+    @State var stories: [Story] = []
     
     var body: some View {
         ScrollView {
             VStack {
-                IkwambeHeader(title: NSLocalizedString("stories-from-ikwambe", comment: ""), image: "child-water")
+                IkwambeHeader(title: NSLocalizedString("stories-from-ikwambe", comment: ""), image: "ikwambe-people")
             }
             
-            VStack(alignment: .leading){
+            VStack(alignment: .center){
                 Text(NSLocalizedString("stories-from-ikwambe-text", comment: ""))
                 
                 if (stories.isEmpty == false) {

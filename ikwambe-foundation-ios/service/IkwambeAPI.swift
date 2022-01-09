@@ -15,7 +15,7 @@ class IkwambeAPI: ObservableObject {
     static let shared: IkwambeAPI = IkwambeAPI()
     private let keychain: Keychain = Keychain()
     private var accessTokenKeychainKey: String = "accessToken"
-    private let baseURL: String = "https://ikwambefoundation.azurewebsites.net/api"
+    private let baseURL: String = "https://stichtingikwambe.azurewebsites.net/api"
     
     var accessToken: String? {
         get {
