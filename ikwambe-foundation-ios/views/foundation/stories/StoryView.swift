@@ -16,7 +16,7 @@ struct StoryView: View {
         ScrollView {
             VStack {
                 IkwambeHeader(title: story.title, image: "child-water")
-
+                
                 VStack(alignment: .leading, spacing: 25) {
                     Text(story.summary)
                         .font(Font.headline.weight(.bold))
