@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct WhoWeAreView: View {
-    let images: [String] = ["foundation-feliciana", "foundation-stephen", "foundation-max", "foundation-pascalle", "foundation-jeroen"]
-    
+    let people: [String : String] = ["Feliciana Mutakyahwa": "foundation-feliciana", "Stephen Ransford": "foundation-stephen", "Max van Vliet": "foundation-max", "Pascalle Essed": "foundation-pascalle", "Jeroen van den Bulk": "foundation-jeroen"]
+        
     var body: some View {
         ScrollView {
             VStack {
@@ -22,7 +22,24 @@ struct WhoWeAreView: View {
                         .font(Font.title.weight(.medium))
                         .padding(.top, 20)
                     
-                    IkwambeImageCarousel(images: images)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(people.sorted(by: <), id: \.key) { key, value in
+                                HStack(spacing: 15) {
+                                    VStack {
+                                        Image(value)
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 175, height: 175, alignment: .center)
+                                            .cornerRadius(10)
+                                        
+                                        Text(key)
+                                    }
+                                    
+                                }.padding(.trailing, 10)
+                            }
+                        }
+                    }
                     
                 }.padding(.horizontal, 8)
             }
