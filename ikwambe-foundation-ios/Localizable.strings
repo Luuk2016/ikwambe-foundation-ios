@@ -86,13 +86,15 @@
 
 "leave-a-message" = "Leave a message behind (optional)";
 
+"please-note-public" = "Please note that this will be public";
+
 "your-name" = "Your name";
 
 "your-message" = "Your message";
 
 "by-donating" = "By donating, you will help to bring clean water to Ikwambe. Please select an amount below:";
 
-"click-to-pay" = "Click the button below to pay";
+"loading-payment" = "Loading payment, please wait";
 
 "who-we-are" = "Who we are";
 

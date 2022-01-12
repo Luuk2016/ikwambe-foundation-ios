@@ -15,6 +15,7 @@ struct DonationView: View {
     @State private var donateVisible: Bool = true
     @State private var continueVisible: Bool = false
     @State private var transactionOpened: Bool = false
+    @State private var transactionId: String = ""
     let projectId: String
         
     var body: some View {
@@ -70,6 +71,7 @@ struct DonationView: View {
                                 ProgressView(NSLocalizedString("loading-payment", comment: ""))
                                 .onAppear {
                                     ikwambeAPI.getPaymentLink(amount: amount) { (transactionResponse) in
+                                        transactionId = transactionResponse.orderId
                                         UIApplication.shared.open(URL(string: transactionResponse.link)!)
                                         transactionOpened = true
                                     }
@@ -79,13 +81,13 @@ struct DonationView: View {
                             
                         // If the transaction has been opened, so the continue button
                         if transactionOpened {
-                            NavigationLink(destination: DonationSummaryView(amount: amount)) {
+                            NavigationLink(destination: DonationSummaryView(amount: amount, projectId: projectId, transactionId: transactionId)) {
                                 Text(NSLocalizedString("continue", comment: ""))
                             }.buttonStyle(BigOrangeButtonStyle())
                         }
                         
-//                        FOR DEVELOPMENT ONLY, REMOVE LATER
-                        NavigationLink(destination: DonationSummaryView(amount: amount)) {
+                        // FOR DEVELOPMENT ONLY, REMOVE LATER
+                        NavigationLink(destination: DonationSummaryView(amount: amount, projectId: projectId, transactionId: transactionId)) {
                             Text("Donation summary")
                         }.buttonStyle(BigOrangeButtonStyle())
                     }

@@ -215,4 +215,46 @@ class IkwambeAPI: ObservableObject {
             }
         }
     }
+    
+    func createDonation(userId: String, projectId: String, transactionId: String, comment: String, name: String, completionHandler:
+    @escaping (Bool) -> ()) {
+        let data = CreateDonationRequest(
+            userId: userId,
+            projectId: projectId,
+            transactionId: transactionId,
+            comment: comment,
+            name: name
+        )
+        
+        AF.request("\(baseURL)/transactions/paypal/complete1", method: .post, parameters: data, encoder: JSONParameterEncoder.default).response { response in
+            switch response.result {
+            case .success:
+                if (response.response?.statusCode == 201) {
+                    completionHandler(true)
+                } else {
+                    completionHandler(false)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                completionHandler(false)
+            }
+        }.resume()
+    }
+    
+    func verifyTransaction(transactionId: String, completionHandler:
+    @escaping (Bool) -> ()) {
+        AF.request("\(baseURL)/transactions/db/\(transactionId)", method: .get).response { response in
+            switch response.result {
+            case .success:
+                if (response.response?.statusCode == 200) {
+                    completionHandler(true)
+                } else {
+                    completionHandler(false)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                completionHandler(false)
+            }
+        }.resume()
+    }
 }

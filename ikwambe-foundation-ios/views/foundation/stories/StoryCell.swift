@@ -19,6 +19,7 @@ struct StoryCell: View {
                 Image(uiImage: storyImage)
                     .resizable()
                     .scaledToFit()
+                    .frame(width: 350, alignment: .center)
                     .cornerRadius(5)
             } else {
                 ProgressView(NSLocalizedString("loading-image", comment: ""))
