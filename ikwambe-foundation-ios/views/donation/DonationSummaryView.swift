@@ -66,10 +66,10 @@ struct DonationSummaryView: View {
                 if confirmClicked {
                     ProgressView("Validating transaction")
                     .onAppear {
-                        ikwambeAPI.createDonation(userId: "", projectId: projectId, transactionId: transactionId, comment: message, name: name) { (donationResponse) in
+                        ikwambeAPI.createDonation(userId: ikwambeAPI.isAuthenticated ? ikwambeAPI.userId! : "", projectId: projectId, transactionId: transactionId, comment: message, name: name) { (donationResponse) in
                             print(donationResponse)
+                            
                             if donationResponse {
-            
                                 ikwambeAPI.verifyTransaction(transactionId: transactionId) { (transactionResponse) in
                                     print(transactionResponse)
             

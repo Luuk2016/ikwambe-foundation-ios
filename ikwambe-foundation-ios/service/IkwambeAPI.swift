@@ -9,12 +9,16 @@ import Foundation
 import Alamofire
 import KeychainAccess
 import UIKit
+import JWTDecode
 
 class IkwambeAPI: ObservableObject {
     @Published var isAuthenticated: Bool = false
     static let shared: IkwambeAPI = IkwambeAPI()
     private let keychain: Keychain = Keychain()
+    
     private var accessTokenKeychainKey: String = "accessToken"
+    private var userIdKeychainKey: String = "userId"
+
     private let baseURL: String = "https://stichtingikwambe.azurewebsites.net/api"
     
     var accessToken: String? {
@@ -29,6 +33,19 @@ class IkwambeAPI: ObservableObject {
             }
             try? keychain.set(accessToken, key: accessTokenKeychainKey)
             isAuthenticated = true
+        }
+    }
+    
+    var userId: String? {
+        get {
+            try? keychain.get(userIdKeychainKey)
+        }
+        set(newValue) {
+            guard let userId = newValue else {
+                try? keychain.remove(userIdKeychainKey)
+                return
+            }
+            try? keychain.set(userId, key: userIdKeychainKey)
         }
     }
     
@@ -51,10 +68,16 @@ class IkwambeAPI: ObservableObject {
                         let result = try JSONDecoder().decode(LoginResponse.self, from: data!)
                         
                         if (result.accessToken != "") {
-                            DispatchQueue.main.async {
-                                print(result.accessToken)
-                                self.accessToken = result.accessToken
+                            let jwt = try decode(jwt: result.accessToken)
+                            
+                            let claim = jwt.claim(name: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")
+                            if let tokenUserId = claim.string {
+                                self.userId = tokenUserId
                             }
+                            
+                            print(result.accessToken)
+                            self.accessToken = result.accessToken
+                            
                             completionHandler(true)
                         } else {
                             completionHandler(false)
@@ -109,6 +132,7 @@ class IkwambeAPI: ObservableObject {
     
     func logout() {
         accessToken = nil
+        userId = nil
     }
     
     func getStories(completionHandler:
@@ -218,6 +242,7 @@ class IkwambeAPI: ObservableObject {
     
     func createDonation(userId: String, projectId: String, transactionId: String, comment: String, name: String, completionHandler:
     @escaping (Bool) -> ()) {
+        
         let data = CreateDonationRequest(
             userId: userId,
             projectId: projectId,

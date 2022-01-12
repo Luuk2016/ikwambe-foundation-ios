@@ -22,9 +22,6 @@ struct DonationConfirmedView: View {
 
             }.padding(.bottom, 70)
                 .multilineTextAlignment(.center)
-            
-            Toggle(NSLocalizedString("keep-me-up-to-date", comment: ""), isOn: $toggleValue)
-                .padding(.bottom, 25)
            
             Button(NSLocalizedString("spread-the-word", comment: "")) {
                 shareView()

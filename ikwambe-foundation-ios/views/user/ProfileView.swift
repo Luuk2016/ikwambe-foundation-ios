@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ProfileView: View {
     @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
-    @State private var value = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
@@ -34,11 +33,6 @@ struct ProfileView: View {
                 
                 Text(NSLocalizedString("account-explanation", comment: ""))
             }
-            
-            Text(NSLocalizedString("stay-up-to-date", comment: ""))
-                .font(.title)
-            
-            Toggle(NSLocalizedString("receive-notifications", comment: ""), isOn: $value)
             
             if ikwambeAPI.isAuthenticated {
                 Text(NSLocalizedString("my-donations", comment: ""))
