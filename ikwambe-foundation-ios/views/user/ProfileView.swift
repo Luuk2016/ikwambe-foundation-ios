@@ -9,14 +9,16 @@ import SwiftUI
 
 struct ProfileView: View {
     @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
+//    @State var donations: [Donation] = Donation.testDonations
+    @State var donations: [Donation] = []
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
+        VStack(spacing: 15) {
             if ikwambeAPI.isAuthenticated {
                 Text(NSLocalizedString("welcome-back", comment: ""))
                     .font(.title3)
             } else {
-                HStack(alignment: .center) {
+                HStack {
                     NavigationLink(destination: LoginView()) {
                         Text(NSLocalizedString("login", comment: ""))
                     }.buttonStyle(SmallBlueButtonStyle())
@@ -38,12 +40,25 @@ struct ProfileView: View {
                 Text(NSLocalizedString("my-donations", comment: ""))
                     .font(.title)
                 
-                Text(NSLocalizedString("no-donations-found", comment: ""))
+                if (donations.isEmpty == false) {
+                    ForEach(donations) { donation in
+                        VStack(alignment: .leading) {
+                            Text("Donation of \(donation.amount, specifier: "%.2f") euro")
+                        }
+                    }
+                    
+                } else {
+                    ProgressView("Loading donations")
+                    .onAppear {
+                        ikwambeAPI.getDonationsByUser(bearerToken: ikwambeAPI.accessToken!, userId: ikwambeAPI.userId!) { (donations) in
+                            self.donations = donations
+                        }
+                    }
+                }
             }
             
             Spacer()
         }.navigationTitle(NSLocalizedString("profile", comment: ""))
-            .padding(.horizontal, 15)
             .padding(.top, 15)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

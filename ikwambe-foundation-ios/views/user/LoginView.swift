@@ -19,7 +19,6 @@ struct LoginView: View {
     
     var body: some View {
         VStack(spacing: 10) {
-    
             IkwambeTextField(title: NSLocalizedString("email", comment: ""), field: $email)
             
             IkwambeSecureField(title: NSLocalizedString("password", comment: ""), field: $password)

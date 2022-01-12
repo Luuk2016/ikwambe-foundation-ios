@@ -242,7 +242,6 @@ class IkwambeAPI: ObservableObject {
     
     func createDonation(userId: String, projectId: String, transactionId: String, comment: String, name: String, completionHandler:
     @escaping (Bool) -> ()) {
-        
         let data = CreateDonationRequest(
             userId: userId,
             projectId: projectId,
@@ -281,5 +280,26 @@ class IkwambeAPI: ObservableObject {
                 completionHandler(false)
             }
         }.resume()
+    }
+    
+    func getDonationsByUser(bearerToken: String, userId: String, completionHandler:
+    @escaping ([Donation]) -> ()) {
+        let headers: HTTPHeaders = [.authorization(bearerToken: bearerToken)]
+        
+        AF.request("\(baseURL)/donations/user/\(userId)", method: .get, headers: headers).response { response in
+            switch response.result {
+            case .success(let data):
+                if (response.response?.statusCode == 200) {
+                    do {
+                        let result = try JSONDecoder().decode([Donation].self, from: data!)
+                        completionHandler(result)
+                    } catch {
+                        print(error)
+                    }
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
     }
 }
