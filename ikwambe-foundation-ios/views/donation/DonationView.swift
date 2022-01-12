@@ -11,7 +11,10 @@ struct DonationView: View {
     @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
     @State var transaction: TransactionResponse?
     @State private var amount: Double = 0.00
-    @Environment(\.openURL) var openURL
+    @State private var donateClicked: Bool = false
+    @State private var donateVisible: Bool = true
+    @State private var continueVisible: Bool = false
+    @State private var transactionOpened: Bool = false
     let projectId: String
         
     var body: some View {
@@ -48,19 +51,45 @@ struct DonationView: View {
                         amount = 100.00
                     }.buttonStyle(DonationAmountButton())
                 }
-                                                
-                if (amount != 0.00) {
-//                    Button("Donate € \(amount, specifier: "%.2f")") {
-//                        ikwambeAPI.createDonation(userId: "", projectId: projectId, amount: amount) { (transactionResponse) in
-//                            openURL(URL(string: transactionResponse.link)!)
-//                        }
-//                    }.buttonStyle(BigOrangeButtonStyle())
-                    
-                    NavigationLink(destination: DonationSummaryView(amount: amount)) {
-                        Text("Donation summary")
-                    }.buttonStyle(BigOrangeButtonStyle())
-                    
-                }
+                
+                VStack {
+                    // Only show the buttons when an amount has been selected
+                    if (amount != 0.00) {
+                        
+                        // Only show the donate button when a transaction hasn't been created yet
+                        if donateVisible {
+                            Button("\(NSLocalizedString("donate", comment: "")) € \(amount, specifier: "%.2f")") {
+                                donateVisible = false
+                                donateClicked = true
+                            }.buttonStyle(BigOrangeButtonStyle())
+                        }
+                        
+                        // If the donate button has been clicked, show a spinner and get the payment url
+                        if donateClicked {
+                            if !transactionOpened {
+                                ProgressView(NSLocalizedString("loading-payment", comment: ""))
+                                .onAppear {
+                                    ikwambeAPI.getPaymentLink(amount: amount) { (transactionResponse) in
+                                        UIApplication.shared.open(URL(string: transactionResponse.link)!)
+                                        transactionOpened = true
+                                    }
+                                }
+                            }
+                        }
+                            
+                        // If the transaction has been opened, so the continue button
+                        if transactionOpened {
+                            NavigationLink(destination: DonationSummaryView(amount: amount)) {
+                                Text(NSLocalizedString("continue", comment: ""))
+                            }.buttonStyle(BigOrangeButtonStyle())
+                        }
+                        
+//                        FOR DEVELOPMENT ONLY, REMOVE LATER
+                        NavigationLink(destination: DonationSummaryView(amount: amount)) {
+                            Text("Donation summary")
+                        }.buttonStyle(BigOrangeButtonStyle())
+                    }
+                }.padding(.top, 75)
                 
             }.padding(70)
             

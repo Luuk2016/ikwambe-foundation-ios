@@ -186,7 +186,7 @@ class IkwambeAPI: ObservableObject {
         }
     }
     
-    func createDonation(userId: String, projectId: String, amount: Double, completionHandler:
+    func getPaymentLink(amount: Double, completionHandler:
     @escaping (TransactionResponse) -> ()) {
         let data: Parameters = [
             "currency": "EUR",
