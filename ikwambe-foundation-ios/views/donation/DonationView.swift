@@ -16,6 +16,7 @@ struct DonationView: View {
     @State private var continueVisible: Bool = false
     @State private var transactionOpened: Bool = false
     @State private var transactionId: String = ""
+    @State private var buttonsEnabled: Bool = true
     let projectId: String
         
     var body: some View {
@@ -29,28 +30,34 @@ struct DonationView: View {
                     Button("€ 2") {
                         amount = 2.00
                     }.buttonStyle(DonationAmountButton())
+                        .disabled(!buttonsEnabled)
 
                     Button("€ 5") {
                         amount = 5.00
                     }.buttonStyle(DonationAmountButton())
+                        .disabled(!buttonsEnabled)
 
                     Button("€ 10") {
                         amount = 10.00
                     }.buttonStyle(DonationAmountButton())
+                        .disabled(!buttonsEnabled)
                 }
 
                 HStack(spacing: 30) {
                     Button("€ 20") {
                         amount = 20.00
                     }.buttonStyle(DonationAmountButton())
+                        .disabled(!buttonsEnabled)
 
                     Button("€ 50") {
                         amount = 50.00
                     }.buttonStyle(DonationAmountButton())
+                        .disabled(!buttonsEnabled)
                     
                     Button("€ 100") {
                         amount = 100.00
                     }.buttonStyle(DonationAmountButton())
+                        .disabled(!buttonsEnabled)
                 }
                 
                 VStack {
@@ -61,6 +68,7 @@ struct DonationView: View {
                         if donateVisible {
                             Button("\(NSLocalizedString("donate", comment: "")) € \(amount, specifier: "%.2f")") {
                                 donateVisible = false
+                                buttonsEnabled = false
                                 donateClicked = true
                             }.buttonStyle(BigOrangeButtonStyle())
                         }
@@ -87,9 +95,9 @@ struct DonationView: View {
                         }
                         
                         // FOR DEVELOPMENT ONLY, REMOVE LATER
-                        NavigationLink(destination: DonationSummaryView(amount: amount, projectId: projectId, transactionId: transactionId)) {
-                            Text("Donation summary")
-                        }.buttonStyle(BigOrangeButtonStyle())
+//                        NavigationLink(destination: DonationSummaryView(amount: amount, projectId: projectId, transactionId: transactionId)) {
+//                            Text("Donation summary")
+//                        }.buttonStyle(BigOrangeButtonStyle())
                     }
                 }.padding(.top, 75)
                 

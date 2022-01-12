@@ -16,8 +16,13 @@ struct DonationSummaryView: View {
     
     @State private var name: String = ""
     @State private var message: String = ""
-    @State private var continueActive = false
-    @State private var showSpinner = false
+    @State private var continueSuccessActive: Bool = false
+    @State private var continueFailedActive: Bool = false
+    @State private var showSpinner: Bool = false
+    @State private var confirmVisible: Bool = true
+    @State private var confirmClicked: Bool = false
+    @State private var showError: Bool = false
+    @State private var formsActive: Bool = true
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
@@ -46,40 +51,67 @@ struct DonationSummaryView: View {
                 Text(NSLocalizedString("please-note-public", comment: ""))
                     .font(Font.headline.weight(.light))
                 
-                IkwambeTextField(title: NSLocalizedString("your-name", comment: ""), field: $name)
+                IkwambeTextField(title: NSLocalizedString("your-name", comment: ""), field: $name).disabled(!formsActive)
 
-                IkwambeTextField(title: NSLocalizedString("your-message", comment: ""), field: $message)
+                IkwambeTextField(title: NSLocalizedString("your-message", comment: ""), field: $message).disabled(!formsActive)
                 
-                Button("Transaction response") {
-                    ikwambeAPI.verifyTransaction(transactionId: "28W39863MJ761110K") { (transactionResponse) in
-                        print(transactionResponse)
-                    }
+                if confirmVisible {
+                    Button("Confirm donation") {
+                        confirmClicked = true
+                        confirmVisible = false
+                        
+                    }.buttonStyle(BigOrangeButtonStyle())
                 }
                 
-                NavigationLink(destination: DonationConfirmedView(), isActive: $continueActive) {
-                    Button {
+                if confirmClicked {
+                    ProgressView("Validating transaction")
+                    .onAppear {
                         ikwambeAPI.createDonation(userId: "", projectId: projectId, transactionId: transactionId, comment: message, name: name) { (donationResponse) in
                             print(donationResponse)
                             if donationResponse {
-                                
+            
                                 ikwambeAPI.verifyTransaction(transactionId: transactionId) { (transactionResponse) in
                                     print(transactionResponse)
-                                    
+            
                                     if transactionResponse {
-                                        // Enable the button
-                                        continueActive = true
+                                        confirmClicked = false
+                                        continueSuccessActive = true
+                                        formsActive = false
+                                    } else {
+                                        showError = true
+                                        confirmClicked = false
+                                        continueFailedActive = true
+                                        formsActive = false
                                     }
                                 }
+                            } else {
+                                showError = true
+                                confirmClicked = false
+                                continueFailedActive = true
+                                formsActive = false
                             }
                         }
-                       
-                    } label: {
-                        Text(NSLocalizedString("continue", comment: ""))
                     }
-                }.buttonStyle(BigOrangeButtonStyle())
-                                
+                }
+                
+                if continueSuccessActive {
+                    NavigationLink(destination: DonationConfirmedView()) {
+                        Text(NSLocalizedString("continue", comment: ""))
+                    }.buttonStyle(BigOrangeButtonStyle())
+                }
+                
+                if continueFailedActive {
+                    NavigationLink(destination: ContentView()) {
+                        Text(NSLocalizedString("continue", comment: ""))
+                    }.buttonStyle(BigOrangeButtonStyle())
+                }
+                
+                if showError {
+                    Text("Payment failed, please try again later")
+                }
+            
             }.padding(.top, 20)
-                        
+                      
             Spacer()
         }.navigationTitle(NSLocalizedString("summary", comment: ""))
         .padding(.horizontal, 15)
