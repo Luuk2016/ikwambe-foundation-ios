@@ -8,35 +8,47 @@
 import SwiftUI
 
 struct ProjectView: View {
-    var project: Project
+    let images: [String] = ["current-situation-1", "current-situation-2"]
     
     var body: some View {
-        VStack(alignment: .center, spacing: 20) {
+        ScrollView {
+            IkwambeHeader(title: NSLocalizedString("build-a-water-pump", comment: ""), image: "child-water-2")
             
-            Text("How we're gonna do it")
-                .font(Font.title.weight(.medium))
-            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie nunc scelerisque, suscipit metus feugiat, interdum augue. Nam dolor mauris, euismod sed lectus ut, hendrerit rutrum libero. Vestibulum facilisis quam rhoncus pharetra mattis. Nulla facilisi. Curabitur ex ligula, ornare vel ex sed, fringilla iaculis mauris.")
-            
-            Text("Our current progression")
-                .font(Font.title.weight(.medium))
-            Text("For this project we need \(project.targetGoal, specifier: "%.0f"), we already have \(project.currentTotal, specifier: "%.0f").")
-            
-            NavigationLink(destination: DonateView(project: project)) {
-                Text("Donate now")
-            }
-            
-        }.navigationTitle("Project \(project.nameOfProject)")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: shareView) {
-                        Image(systemName: "square.and.arrow.up")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                    }
+            VStack(alignment: .leading, spacing: 15) {
+                IkwambeProjectStatus()
+
+                Text(NSLocalizedString("overview", comment: ""))
+                    .font(Font.title.weight(.medium))
+                Text(NSLocalizedString("project-overview", comment: ""))
+
+                HStack {
+                    NavigationLink(destination: ProjectMilestonesView()) {
+                        Text(NSLocalizedString("milestones", comment: ""))
+                    }.buttonStyle(SmallBlueButtonStyle())
+                }
+
+                Text(NSLocalizedString("the-current-situation", comment: ""))
+                    .font(Font.title.weight(.medium))
+                
+                IkwambeImageCarousel(images: images)
+
+                NavigationLink(destination: CurrentSituationView()) {
+                    Text(NSLocalizedString("read-more", comment: ""))
+                }.buttonStyle(SmallBlueButtonStyle())
+                
+            }.padding(.horizontal, 15)
+        }.ignoresSafeArea(edges: .top)
+//        .navigationBarHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: shareView) {
+                    Image(systemName: "square.and.arrow.up")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 26, height: 26)
                 }
             }
-            .padding(.horizontal, 15)
-            .padding(.top, 15)
+        }
     }
     
     func shareView() {
@@ -48,6 +60,6 @@ struct ProjectView: View {
 
 struct ProjectView_Previews: PreviewProvider {
     static var previews: some View {
-        ProjectView(project: Project.testProject)
+        ProjectView()
     }
 }

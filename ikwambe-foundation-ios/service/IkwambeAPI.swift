@@ -9,13 +9,17 @@ import Foundation
 import Alamofire
 import KeychainAccess
 import UIKit
+import JWTDecode
 
 class IkwambeAPI: ObservableObject {
     @Published var isAuthenticated: Bool = false
-    static let shared = IkwambeAPI()
-    private let keychain = Keychain()
+    static let shared: IkwambeAPI = IkwambeAPI()
+    private let keychain: Keychain = Keychain()
+    
     private var accessTokenKeychainKey: String = "accessToken"
-    private let baseURL: String = "https://ikwambefoundation.azurewebsites.net/api"
+    private var userIdKeychainKey: String = "userId"
+
+    private let baseURL: String = "https://stichtingikwambe.azurewebsites.net/api"
     
     var accessToken: String? {
         get {
@@ -32,6 +36,19 @@ class IkwambeAPI: ObservableObject {
         }
     }
     
+    var userId: String? {
+        get {
+            try? keychain.get(userIdKeychainKey)
+        }
+        set(newValue) {
+            guard let userId = newValue else {
+                try? keychain.remove(userIdKeychainKey)
+                return
+            }
+            try? keychain.set(userId, key: userIdKeychainKey)
+        }
+    }
+    
     private init() {
         isAuthenticated = accessToken != nil
     }
@@ -43,7 +60,7 @@ class IkwambeAPI: ObservableObject {
             password: password
         )
                 
-        AF.request("\(baseURL)/Login", method: .post, parameters: data, encoder: JSONParameterEncoder.default).response { response in
+        AF.request("\(baseURL)/login", method: .post, parameters: data, encoder: JSONParameterEncoder.default).response { response in
             switch response.result {
             case .success(let data):
                 if (response.response?.statusCode == 200) {
@@ -51,10 +68,16 @@ class IkwambeAPI: ObservableObject {
                         let result = try JSONDecoder().decode(LoginResponse.self, from: data!)
                         
                         if (result.accessToken != "") {
-                            DispatchQueue.main.async {
-                                print(result.accessToken)
-                                self.accessToken = result.accessToken
+                            let jwt = try decode(jwt: result.accessToken)
+                            
+                            let claim = jwt.claim(name: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")
+                            if let tokenUserId = claim.string {
+                                self.userId = tokenUserId
                             }
+                            
+                            print(result.accessToken)
+                            self.accessToken = result.accessToken
+                            
                             completionHandler(true)
                         } else {
                             completionHandler(false)
@@ -72,9 +95,9 @@ class IkwambeAPI: ObservableObject {
         }
     }
     
-    func signup(firstName: String, lastName: String, email: String, password: String, completionHandler:
+    func register(firstName: String, lastName: String, email: String, password: String, completionHandler:
     @escaping (Bool) -> ()) {
-        let data = SignupRequest(
+        let data = RegisterRequest(
             firstName: firstName,
             lastName: lastName,
             email: email,
@@ -87,7 +110,7 @@ class IkwambeAPI: ObservableObject {
             case .success(let data):
                 if (response.response?.statusCode == 200) {
                     do {
-                        let result = try JSONDecoder().decode(SignupResponse.self, from: data!)
+                        let result = try JSONDecoder().decode(RegisterResponse.self, from: data!)
                         
                         if (result.userId != "") {
                             completionHandler(true)
@@ -109,6 +132,7 @@ class IkwambeAPI: ObservableObject {
     
     func logout() {
         accessToken = nil
+        userId = nil
     }
     
     func getStories(completionHandler:
@@ -167,7 +191,26 @@ class IkwambeAPI: ObservableObject {
         }
     }
     
-    func createDonation(userId: String, projectId: String, amount: Double, completionHandler:
+    func getProjectById(projectId: String, completionHandler:
+    @escaping (Project) -> ()) {
+        AF.request("\(baseURL)/waterpumps/\(projectId)", method: .get).response { response in
+            switch response.result {
+            case .success(let data):
+                if (response.response?.statusCode == 200) {
+                    do {
+                        let result = try JSONDecoder().decode(Project.self, from: data!)
+                        completionHandler(result)
+                    } catch {
+                        print(error)
+                    }
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+    
+    func getPaymentLink(amount: Double, completionHandler:
     @escaping (TransactionResponse) -> ()) {
         let data: Parameters = [
             "currency": "EUR",
@@ -193,6 +236,69 @@ class IkwambeAPI: ObservableObject {
                 }
             case .failure(let err):
                 print(err.localizedDescription)
+            }
+        }
+    }
+    
+    func createDonation(userId: String, projectId: String, transactionId: String, comment: String, name: String, completionHandler:
+    @escaping (Bool) -> ()) {
+        let data = CreateDonationRequest(
+            userId: userId,
+            projectId: projectId,
+            transactionId: transactionId,
+            comment: comment,
+            name: name
+        )
+        
+        AF.request("\(baseURL)/transactions/paypal/complete1", method: .post, parameters: data, encoder: JSONParameterEncoder.default).response { response in
+            switch response.result {
+            case .success:
+                if (response.response?.statusCode == 201) {
+                    completionHandler(true)
+                } else {
+                    completionHandler(false)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                completionHandler(false)
+            }
+        }.resume()
+    }
+    
+    func verifyTransaction(transactionId: String, completionHandler:
+    @escaping (Bool) -> ()) {
+        AF.request("\(baseURL)/transactions/db/\(transactionId)", method: .get).response { response in
+            switch response.result {
+            case .success:
+                if (response.response?.statusCode == 200) {
+                    completionHandler(true)
+                } else {
+                    completionHandler(false)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                completionHandler(false)
+            }
+        }.resume()
+    }
+    
+    func getDonationsByUser(bearerToken: String, userId: String, completionHandler:
+    @escaping ([Donation]) -> ()) {
+        let headers: HTTPHeaders = [.authorization(bearerToken: bearerToken)]
+        
+        AF.request("\(baseURL)/donations/user/\(userId)", method: .get, headers: headers).response { response in
+            switch response.result {
+            case .success(let data):
+                if (response.response?.statusCode == 200) {
+                    do {
+                        let result = try JSONDecoder().decode([Donation].self, from: data!)
+                        completionHandler(result)
+                    } catch {
+                        print(error)
+                    }
+                }
+            case .failure(let err):
+                print(err)
             }
         }
     }

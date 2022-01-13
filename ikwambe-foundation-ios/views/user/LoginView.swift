@@ -18,20 +18,12 @@ struct LoginView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            TextField("Email address", text: $email)
-                .padding()
-                .cornerRadius(5.0)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal)
-
-            SecureField("Password", text: $password)
-                .padding()
-                .cornerRadius(5.0)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal)
+        VStack(spacing: 10) {
+            IkwambeTextField(title: NSLocalizedString("email", comment: ""), field: $email)
             
-            Button("Login", action: {
+            IkwambeSecureField(title: NSLocalizedString("password", comment: ""), field: $password)
+            
+            Button(NSLocalizedString("login", comment: ""), action: {
                 ikwambeAPI.login(email: email, password: password) { (isSuccess) in
                     if (isSuccess == false) {
                         print("failure!")
@@ -39,15 +31,16 @@ struct LoginView: View {
                     }
                 }
             }).disabled(formValid == false)
+                .buttonStyle(BigOrangeButtonStyle())
             
-            NavigationLink(destination: SignupView()) {
-                Text("Don't have an account?")
-            }
+            NavigationLink(destination: RegisterView()) {
+                Text(NSLocalizedString("register", comment: ""))
+            }.buttonStyle(BigBlueButtonStyle())
             
             Spacer()
         }.navigationTitle("Login")
         .alert(isPresented: $isFailureAlertPresented) {
-            Alert(title: Text("Message"), message: Text("Login has failed, please try again"))
+            Alert(title: Text(NSLocalizedString("message", comment: "")), message: Text(NSLocalizedString("login-failed", comment: "")))
         }
     }
 }

@@ -14,30 +14,26 @@ struct ikwambe_foundation_iosApp: App {
             TabView {
                 NavigationView {
                     ContentView()
-                }
-                .tabItem {
+                }.tabItem {
                     Label("The Foundation", systemImage: "house.fill")
                 }
                 
                 NavigationView {
-                    ProjectsListView()
-                }
-                .tabItem {
-                    Label("Donate", systemImage: "heart")
+                    ProjectView()
+                }.tabItem {
+                    Label("Projects", systemImage: "heart")
                 }
                 
                 NavigationView {
                     StoriesListView()
-                }
-                .tabItem {
+                }.tabItem {
                     Label("Stories", systemImage: "person.2")
                 }
                 
                 NavigationView {
                     ProfileView()
-                }
-                .tabItem {
-                    Label("My Profile", systemImage: "person")
+                }.tabItem {
+                    Label("Profile", systemImage: "person")
                 }
             }
         }

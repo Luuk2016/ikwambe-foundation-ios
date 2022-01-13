@@ -15,27 +15,21 @@ struct StoryView: View {
     var body: some View {
         ScrollView {
             VStack {
-                if let storyImage = storyImage {
-                    Image(uiImage: storyImage)
-                        .resizable()
-                        .scaledToFit()
-                } else {
-                    ProgressView("Loading image")
-                        .onAppear {
-                            ikwambeAPI.getImage(imageURL: story.imageURL) { (image) in
-                                self.storyImage = image
-                            }
-                        }
-                }
+                IkwambeHeader(title: story.title, image: "child-water")
                 
                 VStack(alignment: .leading, spacing: 25) {
                     Text(story.summary)
                         .font(Font.headline.weight(.bold))
-                    
+
                     Text(story.description)
                 }.padding(.horizontal, 15)
+
+                VStack {
+                    Text(NSLocalizedString("a-story-by", comment: "") + story.author)
+                        .font(Font.headline.weight(.bold))
+                }
             }
-        }.navigationTitle(story.title)
+        }.ignoresSafeArea(edges: .top)
     }
 }
 

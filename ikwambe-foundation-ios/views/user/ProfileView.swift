@@ -9,45 +9,56 @@ import SwiftUI
 
 struct ProfileView: View {
     @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
-    @State private var value = false
+//    @State var donations: [Donation] = Donation.testDonations
+    @State var donations: [Donation] = []
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
+        VStack(spacing: 15) {
             if ikwambeAPI.isAuthenticated {
-                Text("Welcome back!")
+                Text(NSLocalizedString("welcome-back", comment: ""))
                     .font(.title3)
             } else {
-                Text("Together we can help Ikwambe")
-                    .font(.title3)
-                
                 HStack {
                     NavigationLink(destination: LoginView()) {
-                        Text("Login")
+                        Text(NSLocalizedString("login", comment: ""))
+                    }.buttonStyle(SmallBlueButtonStyle())
+                    
+                    NavigationLink(destination: RegisterView()) {
+                        Text(NSLocalizedString("register", comment: ""))
+                    }.buttonStyle(SmallBlueButtonStyle())
+                }
+            }
+            
+            if !ikwambeAPI.isAuthenticated {
+                Text(NSLocalizedString("do-i-need-account", comment: ""))
+                    .font(.title)
+                
+                Text(NSLocalizedString("account-explanation", comment: ""))
+            }
+            
+            if ikwambeAPI.isAuthenticated {
+                Text(NSLocalizedString("my-donations", comment: ""))
+                    .font(.title)
+                
+                if (donations.isEmpty == false) {
+                    ForEach(donations) { donation in
+                        VStack(alignment: .leading) {
+                            Text("Donation of \(donation.amount, specifier: "%.2f") euro")
+                        }
                     }
                     
-                    NavigationLink(destination: SignupView()) {
-                        Text("Signup")
+                } else {
+                    ProgressView("Loading donations")
+                    .onAppear {
+                        ikwambeAPI.getDonationsByUser(bearerToken: ikwambeAPI.accessToken!, userId: ikwambeAPI.userId!) { (donations) in
+                            self.donations = donations
+                        }
                     }
                 }
             }
             
-            Text("Updates")
-                .font(.title)
-            
-            Toggle("Stay up-to-date by receiving push notifications.", isOn: $value)
-            
-            Text("My donations")
-                .font(.title)
-            
-            if ikwambeAPI.isAuthenticated {
-                Text("No donations have been found")
-            } else {
-                Text("Please login/signup to keep track of your donations.")
-            }
-            
             Spacer()
-        }.navigationTitle("Profile")
-            .padding(.horizontal, 15)
+        }.navigationTitle(NSLocalizedString("profile", comment: ""))
             .padding(.top, 15)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -55,7 +66,7 @@ struct ProfileView: View {
                     Button(action: {
                         ikwambeAPI.logout()
                     }) {
-                        Text("Logout")
+                        Text(NSLocalizedString("logout", comment: ""))
                     }
                 }
             }
