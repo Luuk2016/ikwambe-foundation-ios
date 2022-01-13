@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProjectView: View {
-    let images: [String] = ["child-water", "child-water", "child-water",]
+    let images: [String] = ["current-situation-1", "current-situation-2"]
     
     var body: some View {
         ScrollView {
@@ -25,10 +25,6 @@ struct ProjectView: View {
                     NavigationLink(destination: ProjectMilestonesView()) {
                         Text(NSLocalizedString("milestones", comment: ""))
                     }.buttonStyle(SmallBlueButtonStyle())
-
-                    NavigationLink(destination: DonationsOverview()) {
-                        Text(NSLocalizedString("donations", comment: ""))
-                    }.buttonStyle(SmallBlueButtonStyle())
                 }
 
                 Text(NSLocalizedString("the-current-situation", comment: ""))
@@ -42,7 +38,17 @@ struct ProjectView: View {
                 
             }.padding(.horizontal, 15)
         }.ignoresSafeArea(edges: .top)
-        .navigationBarHidden(true)
+//        .navigationBarHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: shareView) {
+                    Image(systemName: "square.and.arrow.up")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 26, height: 26)
+                }
+            }
+        }
     }
     
     func shareView() {
