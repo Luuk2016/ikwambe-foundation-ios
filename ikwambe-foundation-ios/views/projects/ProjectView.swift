@@ -38,7 +38,6 @@ struct ProjectView: View {
                 
             }.padding(.horizontal, 15)
         }.ignoresSafeArea(edges: .top)
-//        .navigationBarHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: shareView) {
@@ -55,7 +54,7 @@ struct ProjectView: View {
        guard let urlShare = URL(string: "https://stichtingikwambe.com/") else { return }
        let activityVC = UIActivityViewController(activityItems: [urlShare], applicationActivities: nil)
        UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
-   }
+    }
 }
 
 struct ProjectView_Previews: PreviewProvider {

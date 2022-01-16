@@ -12,6 +12,12 @@ struct ProfileView: View {
 //    @State var donations: [Donation] = Donation.testDonations
     @State var donations: [Donation] = []
     
+    func getDonations() {
+        ikwambeAPI.getDonationsByUser(bearerToken: ikwambeAPI.accessToken!, userId: ikwambeAPI.userId!) { (donations) in
+            self.donations = donations
+        }
+    }
+
     var body: some View {
         VStack(spacing: 15) {
             if ikwambeAPI.isAuthenticated {
@@ -50,9 +56,7 @@ struct ProfileView: View {
                 } else {
                     ProgressView("Loading donations")
                     .onAppear {
-                        ikwambeAPI.getDonationsByUser(bearerToken: ikwambeAPI.accessToken!, userId: ikwambeAPI.userId!) { (donations) in
-                            self.donations = donations
-                        }
+                        getDonations()
                     }
                 }
             }
@@ -61,6 +65,15 @@ struct ProfileView: View {
         }.navigationTitle(NSLocalizedString("profile", comment: ""))
             .padding(.top, 15)
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                if ikwambeAPI.isAuthenticated {
+                    Button(action: {
+                        getDonations()
+                    }) {
+                        Text(NSLocalizedString("refresh", comment: ""))
+                    }
+                }
+            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 if ikwambeAPI.isAuthenticated {
                     Button(action: {

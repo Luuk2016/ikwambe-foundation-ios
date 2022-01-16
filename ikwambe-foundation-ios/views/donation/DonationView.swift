@@ -93,11 +93,6 @@ struct DonationView: View {
                                 Text(NSLocalizedString("continue", comment: ""))
                             }.buttonStyle(BigOrangeButtonStyle())
                         }
-                        
-                        // FOR DEVELOPMENT ONLY, REMOVE LATER
-//                        NavigationLink(destination: DonationSummaryView(amount: amount, projectId: projectId, transactionId: transactionId)) {
-//                            Text("Donation summary")
-//                        }.buttonStyle(BigOrangeButtonStyle())
                     }
                 }.padding(.top, 75)
                 
