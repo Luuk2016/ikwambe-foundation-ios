@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct ikwambe_foundation_iosApp: App {
+    init() {
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+    }
     var body: some Scene {
         WindowGroup {
             TabView {
@@ -23,13 +26,13 @@ struct ikwambe_foundation_iosApp: App {
                 }.tabItem {
                     Label("Projects", systemImage: "heart")
                 }
-                
+
                 NavigationView {
                     StoriesListView()
                 }.tabItem {
                     Label("Stories", systemImage: "person.2")
                 }
-                
+
                 NavigationView {
                     ProfileView()
                 }.tabItem {
