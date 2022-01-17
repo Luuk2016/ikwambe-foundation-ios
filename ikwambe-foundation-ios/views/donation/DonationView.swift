@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
+import Combine
 
 struct DonationView: View {
     @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
     @State var transaction: TransactionResponse?
     @State private var amount: Double = 0.00
+    
+    @State private var customAmount: String = "0"
+    @State private var customAmountEnabled: Bool = false
+    
     @State private var donateClicked: Bool = false
     @State private var donateVisible: Bool = true
     @State private var continueVisible: Bool = false
@@ -29,16 +34,22 @@ struct DonationView: View {
                 HStack(spacing: 30) {
                     Button("€ 2") {
                         amount = 2.00
+                        customAmount = "0"
+                        customAmountEnabled = false
                     }.buttonStyle(DonationAmountButton())
                         .disabled(!buttonsEnabled)
 
                     Button("€ 5") {
                         amount = 5.00
+                        customAmount = "0"
+                        customAmountEnabled = false
                     }.buttonStyle(DonationAmountButton())
                         .disabled(!buttonsEnabled)
 
                     Button("€ 10") {
                         amount = 10.00
+                        customAmount = "0"
+                        customAmountEnabled = false
                     }.buttonStyle(DonationAmountButton())
                         .disabled(!buttonsEnabled)
                 }
@@ -46,31 +57,60 @@ struct DonationView: View {
                 HStack(spacing: 30) {
                     Button("€ 20") {
                         amount = 20.00
+                        customAmount = "0"
+                        customAmountEnabled = false
                     }.buttonStyle(DonationAmountButton())
                         .disabled(!buttonsEnabled)
 
                     Button("€ 50") {
                         amount = 50.00
+                        customAmount = "0"
+                        customAmountEnabled = false
                     }.buttonStyle(DonationAmountButton())
                         .disabled(!buttonsEnabled)
                     
-                    Button("€ 100") {
-                        amount = 100.00
+                    Button("Other") {
+                        amount = 0.00
+                        customAmountEnabled = true
                     }.buttonStyle(DonationAmountButton())
                         .disabled(!buttonsEnabled)
                 }
                 
                 VStack {
+                    IkwambeTextField(title: "Amount", field: $customAmount)
+                        .keyboardType(.numberPad)
+                        .onReceive(Just(customAmount)) { newValue in
+                            let filtered = newValue.filter { "0123456789".contains($0) }
+                            if filtered != newValue {
+                                self.customAmount = filtered
+                            }
+                        }
+                        .disabled(!customAmountEnabled)
+                }
+                
+                VStack {
                     // Only show the buttons when an amount has been selected
-                    if (amount != 0.00) {
+                    if (amount != 0.00 || customAmount != "0") {
                         
                         // Only show the donate button when a transaction hasn't been created yet
                         if donateVisible {
-                            Button("\(NSLocalizedString("donate", comment: "")) € \(amount, specifier: "%.2f")") {
-                                donateVisible = false
-                                buttonsEnabled = false
-                                donateClicked = true
-                            }.buttonStyle(BigOrangeButtonStyle())
+                            
+                            if (customAmount != "0") {
+                                Button("\(NSLocalizedString("donate", comment: "")) € \(customAmount)") {
+                                    amount = Double(customAmount)!
+                                    customAmountEnabled = false
+                                    donateVisible = false
+                                    buttonsEnabled = false
+                                    donateClicked = true
+                                }.buttonStyle(BigOrangeButtonStyle())
+                            } else {
+                                Button("\(NSLocalizedString("donate", comment: "")) € \(amount, specifier: "%.2f")") {
+                                    customAmountEnabled = false
+                                    donateVisible = false
+                                    buttonsEnabled = false
+                                    donateClicked = true
+                                }.buttonStyle(BigOrangeButtonStyle())
+                            }
                         }
                         
                         // If the donate button has been clicked, show a spinner and get the payment url
@@ -94,7 +134,7 @@ struct DonationView: View {
                             }.buttonStyle(BigOrangeButtonStyle())
                         }
                     }
-                }.padding(.top, 75)
+                }.padding(.top, 20)
                 
             }.padding(70)
             

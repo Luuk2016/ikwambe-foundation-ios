@@ -12,7 +12,7 @@ struct DonationAmountButton: ButtonStyle {
         configuration.label
             .font(.system(size: 24))
             .foregroundColor(configuration.isPressed ? Color.black : Color.white)
-            .frame(width: 70, height: 45, alignment: .center)
+            .frame(width: 80, height: 45, alignment: .center)
             .padding(5)
             .background(configuration.isPressed ? Color(red: 60 / 255, green: 148 / 255, blue: 242 / 255) : Color(red: 64 / 255, green: 156 / 255, blue: 255 / 255))
             .cornerRadius(10)
