@@ -15,11 +15,12 @@ struct Donation: Codable, Identifiable {
     let transactionId: String
     let amount: Double
     let donationDate: String
+    let comment: String
     
-    static let testDonation: Donation = .init(donationId: "0", userId: "0", projectId: "fake-project-id", transactionId: "fake-tx-id", amount: 100.0, donationDate: "fake-date")
+    static let testDonation: Donation = .init(donationId: "0", userId: "0", projectId: "fake-project-id", transactionId: "fake-tx-id", amount: 100.0, donationDate: "fake-date", comment: "My comment")
     
     static let testDonations: [Donation] = [
-        .init(donationId: "1", userId: "0", projectId: "fake-project-id", transactionId: "fake-tx-id", amount: 100.0, donationDate: "fake-date"),
-        .init(donationId: "2", userId: "0", projectId: "fake-project-id", transactionId: "fake-tx-id", amount: 100.0, donationDate: "fake-date")
+        .init(donationId: "1", userId: "0", projectId: "fake-project-id", transactionId: "fake-tx-id", amount: 100.0, donationDate: "fake-date", comment: "My comment"),
+        .init(donationId: "2", userId: "0", projectId: "fake-project-id", transactionId: "fake-tx-id", amount: 100.0, donationDate: "fake-date", comment: "My comment")
     ]
 }

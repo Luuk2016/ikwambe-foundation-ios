@@ -11,13 +11,13 @@ struct ProfileView: View {
     @ObservedObject var ikwambeAPI: IkwambeAPI = IkwambeAPI.shared
 //    @State var donations: [Donation] = Donation.testDonations
     @State var donations: [Donation] = []
-    
+        
     func getDonations() {
         ikwambeAPI.getDonationsByUser(bearerToken: ikwambeAPI.accessToken!, userId: ikwambeAPI.userId!) { (donations) in
             self.donations = donations
         }
     }
-
+        
     var body: some View {
         VStack(spacing: 15) {
             if ikwambeAPI.isAuthenticated {
@@ -48,11 +48,19 @@ struct ProfileView: View {
                 
                 if (donations.isEmpty == false) {
                     ForEach(donations) { donation in
-                        VStack(alignment: .leading) {
-                            Text("Donation of \(donation.amount, specifier: "%.2f") euro")
-                        }
+                        VStack(alignment: .center) {
+                            Text("Waterpump")
+                                .font(Font.headline.weight(.bold))
+                            
+                            Text("&euro;\(donation.amount, specifier: "%.2f") on \(String(donation.donationDate.prefix(10)))")
+                            
+                            if donation.comment != "" {
+                                Text("\(donation.comment)")
+                                    .italic()
+                            }
+                            
+                        }.multilineTextAlignment(.center)
                     }
-                    
                 } else {
                     ProgressView("Loading donations")
                     .onAppear {
