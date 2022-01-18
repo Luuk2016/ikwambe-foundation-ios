@@ -6,11 +6,13 @@
   
 */
 
+"water-pump" = "Water pump";
+
 "help-to-build" = "Help to build a water pump";
 
 "by-making-a-donation" = "By making a donation to the foundation, you can help us with building a water pump.";
 
-"at-this-moment" = "At this moment, drinking water isn't available in the village of ikwambe";
+"at-this-moment" = "At this moment, drinking water isn't available in the village of Ikwambe";
 
 "stories-from-ikwambe" = "Stories from Ikwambe";
 
@@ -34,7 +36,7 @@
 
 "welcome-back" = "Welcome back!";
 
-"do-i-need-account" = "Do i need an account?";
+"do-i-need-account" = "Do I need an account?";
 
 "account-explanation" = "An account is fully optional. \nWith an account you can keep track of your donations.";
 
@@ -52,11 +54,13 @@
 
 "logout" = "Logout";
 
+"loading-donations" = "Loading donations";
+
 "build-a-water-pump" = "Build a water pump";
 
 "overview" = "Overview";
 
-"project-overview" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie nunc scelerisque, suscipit metus feugiat, interdum augue. Nam dolor mauris, euismod sed lectus ut, hendrerit rutrum libero. Vestibulum facilisis quam rhoncus pharetra mattis. Nulla facilisi. Curabitur ex ligula, ornare vel ex sed, fringilla iaculis mauris.";
+"project-overview" = "It is the first step towards the big challenges. Ikwambe is a small village in Tanzania. There is no water source at all, no dispenser, no electricity. But people live there and must survive every day.";
 
 "milestones" = "Milestones";
 
@@ -96,6 +100,8 @@
 
 "by-donating" = "By donating, you will help to bring clean water to Ikwambe. Please select an amount below:";
 
+"other" = "Other";
+
 "loading-payment" = "Loading payment, please wait";
 
 "who-we-are" = "Who we are";
@@ -110,7 +116,7 @@
 
 "stories-from-ikwambe" = "Stories from Ikwambe";
 
-"stories-from-ikwambe-text" = "Be surprised by the most unique, moving or telling stories of the Ikwambe foundation.\nRead their stories here.";
+"stories-from-ikwambe-text" = "Be surprised by the most unique, moving or telling stories of the Ikwambe Foundation.\nRead their stories here.";
 
 "loading-stories" = "Loading stories";
 
@@ -128,7 +134,7 @@ Furthermore there is limited access to clean water all year long.
 
 Few people can boil (dirty) water for drinking. The rest use it only for other domestic purposes.
 
-The other option is to walk 3 to 5 km (to and fro) to the neighboring village of Sululu, where there is a pumping well.
+The other option is to walk 3 to 5 km (to and from) to the neighboring village of Sululu, where there is a pumping well.
 
 However, the villagers are limited by the amount of water they can carry.
 

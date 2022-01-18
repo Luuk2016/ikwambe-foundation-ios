@@ -49,7 +49,7 @@ struct ProfileView: View {
                 if (donations.isEmpty == false) {
                     ForEach(donations) { donation in
                         VStack(alignment: .center) {
-                            Text("Waterpump")
+                            Text(NSLocalizedString("water-pump", comment: ""))
                                 .font(Font.headline.weight(.bold))
                             
                             Text("&euro;\(donation.amount, specifier: "%.2f") on \(String(donation.donationDate.prefix(10)))")
@@ -62,7 +62,7 @@ struct ProfileView: View {
                         }.multilineTextAlignment(.center)
                     }
                 } else {
-                    ProgressView("Loading donations")
+                    ProgressView(NSLocalizedString("loading-donations", comment: ""))
                     .onAppear {
                         getDonations()
                     }

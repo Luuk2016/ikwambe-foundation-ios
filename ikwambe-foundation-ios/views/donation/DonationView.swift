@@ -69,7 +69,7 @@ struct DonationView: View {
                     }.buttonStyle(DonationAmountButton())
                         .disabled(!buttonsEnabled)
                     
-                    Button("Other") {
+                    Button(NSLocalizedString("other", comment: "")) {
                         amount = 0.00
                         customAmountEnabled = true
                     }.buttonStyle(DonationAmountButton())
