@@ -1,0 +1,153 @@
+/* 
+  Localizable.strings
+  ikwambe-foundation-ios
+
+  Created by Luuk Kenselaar on 09/12/2021.
+  
+*/
+
+"water-pump" = "Water pump";
+
+"help-to-build" = "Help to build a water pump";
+
+"by-making-a-donation" = "By making a donation to the foundation, you can help us with building a water pump.";
+
+"at-this-moment" = "At this moment, drinking water isn't available in the village of Ikwambe";
+
+"stories-from-ikwambe" = "Stories from Ikwambe";
+
+"first-name" = "First name";
+
+"last-name" = "Last name";
+
+"email" = "Email address";
+
+"password" = "Password";
+
+"confirm-password" = "Confirm your password";
+
+"register" = "Register";
+
+"login" = "Login";
+
+"message" = "Message";
+
+"login-failed" = "Login has failed, please try again";
+
+"welcome-back" = "Welcome back!";
+
+"do-i-need-account" = "Do I need an account?";
+
+"account-explanation" = "An account is fully optional. \nWith an account you can keep track of your donations.";
+
+"stay-up-to-date" = "Stay up-to-date";
+
+"receive-notifications" = "Receive push notifications";
+
+"my-donations" = "My donations";
+
+"no-donations-found" = "No donations have been found";
+
+"profile" = "Profile";
+
+"refresh" = "Refresh";
+
+"logout" = "Logout";
+
+"loading-donations" = "Loading donations";
+
+"build-a-water-pump" = "Build a water pump";
+
+"overview" = "Overview";
+
+"project-overview" = "It is the first step towards the big challenges. Ikwambe is a small village in Tanzania. There is no water source at all, no dispenser, no electricity. But people live there and must survive every day.";
+
+"milestones" = "Milestones";
+
+"project-milestones" = "Project milestones";
+
+"donations" = "Donations";
+
+"the-current-situation" = "The current situation";
+
+"current-situation" = "Current situation";
+
+"read-more" = "Read more";
+
+"thank-you-for-helping" = "Thank you for helping";
+
+"your-money" = "Your money will be used to\nsupport the build of the \nwater pump.";
+
+"keep-me-up-to-date" = "Keep me up-to-date";
+
+"spread-the-word" = "Spread the word";
+
+"continue" = "Continue";
+
+"donate" = "Donate";
+
+"summary" = "Summary";
+
+"you-donated" = "You donated";
+
+"leave-a-message" = "Leave a message behind (optional)";
+
+"please-note-public" = "Please note that this will be public";
+
+"your-name" = "Your name";
+
+"your-message" = "Your message";
+
+"by-donating" = "By donating, you will help to bring clean water to Ikwambe. Please select an amount below:";
+
+"other" = "Other";
+
+"loading-payment" = "Loading payment, please wait";
+
+"who-we-are" = "Who we are";
+
+"who-we-are-text" = "The initiative to help out the villages of Ikwambe and Nangonji came from our own chairwoman, Feliciana.\n\nFeliciana was born and raised in Ikwambe, therefor she has experienced the problems that exist in the village";
+
+"our-board-members" = "Our board members";
+
+"loading-image" = "Loading image";
+
+"a-story-by" = "A story by ";
+
+"stories-from-ikwambe" = "Stories from Ikwambe";
+
+"stories-from-ikwambe-text" = "Be surprised by the most unique, moving or telling stories of the Ikwambe Foundation.\nRead their stories here.";
+
+"loading-stories" = "Loading stories";
+
+"x-people-are-already-helping" = "people are already helping";
+
+"help-now" = "Help now";
+
+"loading-project" = "Loading project";
+
+"the-people-behind-the-foundation" = "The people behind the foundation";
+
+"current-situation-story" = "Ikwambe has so called seasonal rivers, in the dry season there is very limited access to water
+
+Furthermore there is limited access to clean water all year long.
+
+Few people can boil (dirty) water for drinking. The rest use it only for other domestic purposes.
+
+The other option is to walk 3 to 5 km (to and from) to the neighboring village of Sululu, where there is a pumping well.
+
+However, the villagers are limited by the amount of water they can carry.
+
+Obtaining this water is the work of women and children.";
+
+"milestone-1" = "[Milestone 1]";
+
+"milestone-1-text" = "€6.875: When we reach this goal we can start with:";
+
+"milestone-2" = "[Milestone 2]";
+
+"milestone-2-text" = "€13.750: When we reach this goal we can start with:";
+
+"milestone-3" = "[Milestone 3]";
+
+"milestone-3-text" = "€20.635: When we reach this goal we can start with:";

@@ -9,9 +9,36 @@ import SwiftUI
 
 @main
 struct ikwambe_foundation_iosApp: App {
+    init() {
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+    }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                NavigationView {
+                    ContentView()
+                }.tabItem {
+                    Label("The Foundation", systemImage: "house.fill")
+                }
+                
+                NavigationView {
+                    ProjectView()
+                }.tabItem {
+                    Label("Projects", systemImage: "heart")
+                }
+
+                NavigationView {
+                    StoriesListView()
+                }.tabItem {
+                    Label("Stories", systemImage: "person.2")
+                }
+
+                NavigationView {
+                    ProfileView()
+                }.tabItem {
+                    Label("Profile", systemImage: "person")
+                }
+            }
         }
     }
 }
