@@ -1,0 +1,683 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		15019BD62780E369005811D7 /* DonationSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15019BD52780E369005811D7 /* DonationSummaryView.swift */; };
+		1503AF7C275E89B100C9CB67 /* IkwambeProjectStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503AF7B275E89B100C9CB67 /* IkwambeProjectStatus.swift */; };
+		150BE01D278F12EC00F47362 /* CreateDonationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150BE01C278F12EC00F47362 /* CreateDonationRequest.swift */; };
+		15137C37276156BB0017AB09 /* IkwambeHomeCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15137C36276156BB0017AB09 /* IkwambeHomeCarousel.swift */; };
+		15137C392761588B0017AB09 /* IkwambeImageCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15137C382761588B0017AB09 /* IkwambeImageCarousel.swift */; };
+		151EDBA3278B66D800C2AA57 /* StoryImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151EDBA2278B66D800C2AA57 /* StoryImage.swift */; };
+		151EDBA5278B8DE200C2AA57 /* CurrentSituationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151EDBA4278B8DE200C2AA57 /* CurrentSituationView.swift */; };
+		151EDBA7278B8E9A00C2AA57 /* ProjectMilestonesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151EDBA6278B8E9A00C2AA57 /* ProjectMilestonesView.swift */; };
+		1528B31B278F6C0100CCDE1E /* Donation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1528B31A278F6C0100CCDE1E /* Donation.swift */; };
+		15368B6727418E6B00AD0762 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15368B6627418E6B00AD0762 /* StoryCell.swift */; };
+		15368B6A2741AC2A00AD0762 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15368B692741AC2A00AD0762 /* Project.swift */; };
+		153EA86F2740154A008674AF /* TransactionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA8682740154A008674AF /* TransactionResponse.swift */; };
+		153EA8702740154A008674AF /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA86A2740154A008674AF /* LoginRequest.swift */; };
+		153EA8712740154A008674AF /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA86B2740154A008674AF /* LoginResponse.swift */; };
+		153EA8722740154A008674AF /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA86D2740154A008674AF /* RegisterRequest.swift */; };
+		153EA8732740154A008674AF /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA86E2740154A008674AF /* RegisterResponse.swift */; };
+		153EA87627401561008674AF /* DonationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA87527401561008674AF /* DonationView.swift */; };
+		153EA879274015B5008674AF /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153EA878274015B5008674AF /* Story.swift */; };
+		157366512743E2E200AA57D0 /* DonationConfirmedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157366502743E2E200AA57D0 /* DonationConfirmedView.swift */; };
+		15788788278F51CF00C2236A /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 15788787278F51CF00C2236A /* JWTDecode */; };
+		15A6A235273D6E6B000F869F /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 15A6A234273D6E6B000F869F /* KeychainAccess */; };
+		15A6A23A273D6F31000F869F /* IkwambeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A6A239273D6F31000F869F /* IkwambeAPI.swift */; };
+		15A6A240273D7124000F869F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 15A6A23F273D7124000F869F /* Alamofire */; };
+		15A6A245273D7E2F000F869F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A6A244273D7E2F000F869F /* ProfileView.swift */; };
+		15A6A250273D7F58000F869F /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A6A24F273D7F58000F869F /* ProjectView.swift */; };
+		15A6A252273D8030000F869F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A6A251273D8030000F869F /* LoginView.swift */; };
+		15A6A254273D8039000F869F /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A6A253273D8039000F869F /* RegisterView.swift */; };
+		15B0BF37275BFCCD001CE742 /* BigBlueButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0BF36275BFCCD001CE742 /* BigBlueButtonStyle.swift */; };
+		15B0BF3B275C028B001CE742 /* BigOrangeButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0BF3A275C028B001CE742 /* BigOrangeButtonStyle.swift */; };
+		15B0BF3D275C0300001CE742 /* SmallOrangeButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0BF3C275C0300001CE742 /* SmallOrangeButtonStyle.swift */; };
+		15B0BF3F275C0323001CE742 /* SmallBlueButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0BF3E275C0323001CE742 /* SmallBlueButtonStyle.swift */; };
+		15B0BF44275C0C0F001CE742 /* IkwambeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0BF43275C0C0F001CE742 /* IkwambeTextField.swift */; };
+		15B0BF46275C0E52001CE742 /* IkwambeSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0BF45275C0E52001CE742 /* IkwambeSecureField.swift */; };
+		15B0BF4C275C22B0001CE742 /* WhoWeAreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0BF4B275C22B0001CE742 /* WhoWeAreView.swift */; };
+		15B0BF53275D2880001CE742 /* IkwambeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0BF52275D2880001CE742 /* IkwambeHeader.swift */; };
+		15B860E9273D2BB100108A82 /* ikwambe_foundation_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B860E8273D2BB100108A82 /* ikwambe_foundation_iosApp.swift */; };
+		15B860EB273D2BB100108A82 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B860EA273D2BB100108A82 /* ContentView.swift */; };
+		15B860ED273D2BB200108A82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15B860EC273D2BB200108A82 /* Assets.xcassets */; };
+		15B860F0273D2BB200108A82 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15B860EF273D2BB200108A82 /* Preview Assets.xcassets */; };
+		15BC94172784CAC700CCAD00 /* DonationAmountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BC94162784CAC700CCAD00 /* DonationAmountButton.swift */; };
+		15C0C8A1276219B4007A3369 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15C0C8A0276219B4007A3369 /* Localizable.strings */; };
+		15D6AD6727417E64003E4DB8 /* StoriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6AD6627417E64003E4DB8 /* StoriesListView.swift */; };
+		15D6AD6927417EAB003E4DB8 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D6AD6827417EAB003E4DB8 /* StoryView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		15019BD52780E369005811D7 /* DonationSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationSummaryView.swift; sourceTree = "<group>"; };
+		1503AF7B275E89B100C9CB67 /* IkwambeProjectStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkwambeProjectStatus.swift; sourceTree = "<group>"; };
+		150BE01C278F12EC00F47362 /* CreateDonationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDonationRequest.swift; sourceTree = "<group>"; };
+		15137C36276156BB0017AB09 /* IkwambeHomeCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkwambeHomeCarousel.swift; sourceTree = "<group>"; };
+		15137C382761588B0017AB09 /* IkwambeImageCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkwambeImageCarousel.swift; sourceTree = "<group>"; };
+		151EDBA2278B66D800C2AA57 /* StoryImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryImage.swift; sourceTree = "<group>"; };
+		151EDBA4278B8DE200C2AA57 /* CurrentSituationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSituationView.swift; sourceTree = "<group>"; };
+		151EDBA6278B8E9A00C2AA57 /* ProjectMilestonesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectMilestonesView.swift; sourceTree = "<group>"; };
+		1528B31A278F6C0100CCDE1E /* Donation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Donation.swift; sourceTree = "<group>"; };
+		15368B6627418E6B00AD0762 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
+		15368B692741AC2A00AD0762 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		153EA8682740154A008674AF /* TransactionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionResponse.swift; sourceTree = "<group>"; };
+		153EA86A2740154A008674AF /* LoginRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		153EA86B2740154A008674AF /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		153EA86D2740154A008674AF /* RegisterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
+		153EA86E2740154A008674AF /* RegisterResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
+		153EA87527401561008674AF /* DonationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationView.swift; sourceTree = "<group>"; };
+		153EA878274015B5008674AF /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		157366502743E2E200AA57D0 /* DonationConfirmedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationConfirmedView.swift; sourceTree = "<group>"; };
+		15A6A239273D6F31000F869F /* IkwambeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkwambeAPI.swift; sourceTree = "<group>"; };
+		15A6A244273D7E2F000F869F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		15A6A24F273D7F58000F869F /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
+		15A6A251273D8030000F869F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		15A6A253273D8039000F869F /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		15B0BF36275BFCCD001CE742 /* BigBlueButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBlueButtonStyle.swift; sourceTree = "<group>"; };
+		15B0BF3A275C028B001CE742 /* BigOrangeButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigOrangeButtonStyle.swift; sourceTree = "<group>"; };
+		15B0BF3C275C0300001CE742 /* SmallOrangeButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallOrangeButtonStyle.swift; sourceTree = "<group>"; };
+		15B0BF3E275C0323001CE742 /* SmallBlueButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallBlueButtonStyle.swift; sourceTree = "<group>"; };
+		15B0BF43275C0C0F001CE742 /* IkwambeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkwambeTextField.swift; sourceTree = "<group>"; };
+		15B0BF45275C0E52001CE742 /* IkwambeSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkwambeSecureField.swift; sourceTree = "<group>"; };
+		15B0BF4B275C22B0001CE742 /* WhoWeAreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoWeAreView.swift; sourceTree = "<group>"; };
+		15B0BF50275D2538001CE742 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15B0BF52275D2880001CE742 /* IkwambeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IkwambeHeader.swift; sourceTree = "<group>"; };
+		15B860E5273D2BB100108A82 /* Ikwambe Foundation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ikwambe Foundation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		15B860E8273D2BB100108A82 /* ikwambe_foundation_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ikwambe_foundation_iosApp.swift; sourceTree = "<group>"; };
+		15B860EA273D2BB100108A82 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		15B860EC273D2BB200108A82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		15B860EF273D2BB200108A82 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		15BC94162784CAC700CCAD00 /* DonationAmountButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationAmountButton.swift; sourceTree = "<group>"; };
+		15C0C8A0276219B4007A3369 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		15D6AD6627417E64003E4DB8 /* StoriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesListView.swift; sourceTree = "<group>"; };
+		15D6AD6827417EAB003E4DB8 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		15B860E2273D2BB100108A82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15A6A235273D6E6B000F869F /* KeychainAccess in Frameworks */,
+				15A6A240273D7124000F869F /* Alamofire in Frameworks */,
+				15788788278F51CF00C2236A /* JWTDecode in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		15368B682741AC1A00AD0762 /* project */ = {
+			isa = PBXGroup;
+			children = (
+				15368B692741AC2A00AD0762 /* Project.swift */,
+			);
+			path = project;
+			sourceTree = "<group>";
+		};
+		153EA8672740154A008674AF /* donation */ = {
+			isa = PBXGroup;
+			children = (
+				153EA8682740154A008674AF /* TransactionResponse.swift */,
+				150BE01C278F12EC00F47362 /* CreateDonationRequest.swift */,
+				1528B31A278F6C0100CCDE1E /* Donation.swift */,
+			);
+			path = donation;
+			sourceTree = "<group>";
+		};
+		153EA8692740154A008674AF /* login */ = {
+			isa = PBXGroup;
+			children = (
+				153EA86A2740154A008674AF /* LoginRequest.swift */,
+				153EA86B2740154A008674AF /* LoginResponse.swift */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		153EA86C2740154A008674AF /* register */ = {
+			isa = PBXGroup;
+			children = (
+				153EA86D2740154A008674AF /* RegisterRequest.swift */,
+				153EA86E2740154A008674AF /* RegisterResponse.swift */,
+			);
+			path = register;
+			sourceTree = "<group>";
+		};
+		153EA87427401561008674AF /* donation */ = {
+			isa = PBXGroup;
+			children = (
+				153EA87527401561008674AF /* DonationView.swift */,
+				157366502743E2E200AA57D0 /* DonationConfirmedView.swift */,
+				15019BD52780E369005811D7 /* DonationSummaryView.swift */,
+			);
+			path = donation;
+			sourceTree = "<group>";
+		};
+		153EA877274015A9008674AF /* story */ = {
+			isa = PBXGroup;
+			children = (
+				153EA878274015B5008674AF /* Story.swift */,
+				151EDBA2278B66D800C2AA57 /* StoryImage.swift */,
+			);
+			path = story;
+			sourceTree = "<group>";
+		};
+		15A6A236273D6E72000F869F /* service */ = {
+			isa = PBXGroup;
+			children = (
+				15A6A239273D6F31000F869F /* IkwambeAPI.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		15A6A237273D6E78000F869F /* model */ = {
+			isa = PBXGroup;
+			children = (
+				153EA8692740154A008674AF /* login */,
+				153EA86C2740154A008674AF /* register */,
+				15368B682741AC1A00AD0762 /* project */,
+				153EA877274015A9008674AF /* story */,
+				153EA8672740154A008674AF /* donation */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		15A6A238273D6E88000F869F /* views */ = {
+			isa = PBXGroup;
+			children = (
+				15B0BF2C275BDB14001CE742 /* styles */,
+				15B0BF42275C0BE6001CE742 /* custom-views */,
+				15B0BF4A275C229E001CE742 /* foundation */,
+				153EA87427401561008674AF /* donation */,
+				15A6A242273D7E0B000F869F /* projects */,
+				15A6A241273D7E05000F869F /* user */,
+				15B860EA273D2BB100108A82 /* ContentView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		15A6A241273D7E05000F869F /* user */ = {
+			isa = PBXGroup;
+			children = (
+				15A6A244273D7E2F000F869F /* ProfileView.swift */,
+				15A6A251273D8030000F869F /* LoginView.swift */,
+				15A6A253273D8039000F869F /* RegisterView.swift */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
+		15A6A242273D7E0B000F869F /* projects */ = {
+			isa = PBXGroup;
+			children = (
+				15A6A24F273D7F58000F869F /* ProjectView.swift */,
+				151EDBA4278B8DE200C2AA57 /* CurrentSituationView.swift */,
+				151EDBA6278B8E9A00C2AA57 /* ProjectMilestonesView.swift */,
+			);
+			path = projects;
+			sourceTree = "<group>";
+		};
+		15A6A246273D7E87000F869F /* stories */ = {
+			isa = PBXGroup;
+			children = (
+				15D6AD6627417E64003E4DB8 /* StoriesListView.swift */,
+				15D6AD6827417EAB003E4DB8 /* StoryView.swift */,
+				15368B6627418E6B00AD0762 /* StoryCell.swift */,
+			);
+			path = stories;
+			sourceTree = "<group>";
+		};
+		15B0BF2C275BDB14001CE742 /* styles */ = {
+			isa = PBXGroup;
+			children = (
+				15B0BF36275BFCCD001CE742 /* BigBlueButtonStyle.swift */,
+				15B0BF3C275C0300001CE742 /* SmallOrangeButtonStyle.swift */,
+				15B0BF3A275C028B001CE742 /* BigOrangeButtonStyle.swift */,
+				15B0BF3E275C0323001CE742 /* SmallBlueButtonStyle.swift */,
+				15BC94162784CAC700CCAD00 /* DonationAmountButton.swift */,
+			);
+			path = styles;
+			sourceTree = "<group>";
+		};
+		15B0BF42275C0BE6001CE742 /* custom-views */ = {
+			isa = PBXGroup;
+			children = (
+				15B0BF43275C0C0F001CE742 /* IkwambeTextField.swift */,
+				15B0BF45275C0E52001CE742 /* IkwambeSecureField.swift */,
+				15B0BF52275D2880001CE742 /* IkwambeHeader.swift */,
+				1503AF7B275E89B100C9CB67 /* IkwambeProjectStatus.swift */,
+				15137C36276156BB0017AB09 /* IkwambeHomeCarousel.swift */,
+				15137C382761588B0017AB09 /* IkwambeImageCarousel.swift */,
+			);
+			path = "custom-views";
+			sourceTree = "<group>";
+		};
+		15B0BF4A275C229E001CE742 /* foundation */ = {
+			isa = PBXGroup;
+			children = (
+				15A6A246273D7E87000F869F /* stories */,
+				15B0BF4B275C22B0001CE742 /* WhoWeAreView.swift */,
+			);
+			path = foundation;
+			sourceTree = "<group>";
+		};
+		15B860DC273D2BB100108A82 = {
+			isa = PBXGroup;
+			children = (
+				15B860E7273D2BB100108A82 /* ikwambe-foundation-ios */,
+				15B860E6273D2BB100108A82 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		15B860E6273D2BB100108A82 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				15B860E5273D2BB100108A82 /* Ikwambe Foundation.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		15B860E7273D2BB100108A82 /* ikwambe-foundation-ios */ = {
+			isa = PBXGroup;
+			children = (
+				15B0BF50275D2538001CE742 /* Info.plist */,
+				15A6A238273D6E88000F869F /* views */,
+				15A6A237273D6E78000F869F /* model */,
+				15A6A236273D6E72000F869F /* service */,
+				15B860E8273D2BB100108A82 /* ikwambe_foundation_iosApp.swift */,
+				15B860EC273D2BB200108A82 /* Assets.xcassets */,
+				15B860EE273D2BB200108A82 /* Preview Content */,
+				15C0C8A0276219B4007A3369 /* Localizable.strings */,
+			);
+			path = "ikwambe-foundation-ios";
+			sourceTree = "<group>";
+		};
+		15B860EE273D2BB200108A82 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				15B860EF273D2BB200108A82 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		15B860E4273D2BB100108A82 /* ikwambe-foundation-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15B860F3273D2BB200108A82 /* Build configuration list for PBXNativeTarget "ikwambe-foundation-ios" */;
+			buildPhases = (
+				15B860E1273D2BB100108A82 /* Sources */,
+				15B860E2273D2BB100108A82 /* Frameworks */,
+				15B860E3273D2BB100108A82 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ikwambe-foundation-ios";
+			packageProductDependencies = (
+				15A6A234273D6E6B000F869F /* KeychainAccess */,
+				15A6A23F273D7124000F869F /* Alamofire */,
+				15788787278F51CF00C2236A /* JWTDecode */,
+			);
+			productName = "ikwambe-foundation-ios";
+			productReference = 15B860E5273D2BB100108A82 /* Ikwambe Foundation.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		15B860DD273D2BB100108A82 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					15B860E4273D2BB100108A82 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = 15B860E0273D2BB100108A82 /* Build configuration list for PBXProject "ikwambe-foundation-ios" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 15B860DC273D2BB100108A82;
+			packageReferences = (
+				15A6A233273D6E6B000F869F /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				15A6A23E273D7124000F869F /* XCRemoteSwiftPackageReference "Alamofire" */,
+				15788786278F51CF00C2236A /* XCRemoteSwiftPackageReference "JWTDecode" */,
+			);
+			productRefGroup = 15B860E6273D2BB100108A82 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				15B860E4273D2BB100108A82 /* ikwambe-foundation-ios */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		15B860E3273D2BB100108A82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15B860F0273D2BB200108A82 /* Preview Assets.xcassets in Resources */,
+				15C0C8A1276219B4007A3369 /* Localizable.strings in Resources */,
+				15B860ED273D2BB200108A82 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		15B860E1273D2BB100108A82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				153EA87627401561008674AF /* DonationView.swift in Sources */,
+				151EDBA5278B8DE200C2AA57 /* CurrentSituationView.swift in Sources */,
+				157366512743E2E200AA57D0 /* DonationConfirmedView.swift in Sources */,
+				1503AF7C275E89B100C9CB67 /* IkwambeProjectStatus.swift in Sources */,
+				15B0BF53275D2880001CE742 /* IkwambeHeader.swift in Sources */,
+				15B0BF44275C0C0F001CE742 /* IkwambeTextField.swift in Sources */,
+				15D6AD6727417E64003E4DB8 /* StoriesListView.swift in Sources */,
+				153EA86F2740154A008674AF /* TransactionResponse.swift in Sources */,
+				153EA879274015B5008674AF /* Story.swift in Sources */,
+				15B0BF3D275C0300001CE742 /* SmallOrangeButtonStyle.swift in Sources */,
+				153EA8722740154A008674AF /* RegisterRequest.swift in Sources */,
+				151EDBA3278B66D800C2AA57 /* StoryImage.swift in Sources */,
+				15368B6727418E6B00AD0762 /* StoryCell.swift in Sources */,
+				15A6A245273D7E2F000F869F /* ProfileView.swift in Sources */,
+				15137C37276156BB0017AB09 /* IkwambeHomeCarousel.swift in Sources */,
+				15B0BF4C275C22B0001CE742 /* WhoWeAreView.swift in Sources */,
+				15368B6A2741AC2A00AD0762 /* Project.swift in Sources */,
+				15B0BF3B275C028B001CE742 /* BigOrangeButtonStyle.swift in Sources */,
+				15B860EB273D2BB100108A82 /* ContentView.swift in Sources */,
+				151EDBA7278B8E9A00C2AA57 /* ProjectMilestonesView.swift in Sources */,
+				15A6A252273D8030000F869F /* LoginView.swift in Sources */,
+				15A6A254273D8039000F869F /* RegisterView.swift in Sources */,
+				153EA8732740154A008674AF /* RegisterResponse.swift in Sources */,
+				15A6A23A273D6F31000F869F /* IkwambeAPI.swift in Sources */,
+				15D6AD6927417EAB003E4DB8 /* StoryView.swift in Sources */,
+				15137C392761588B0017AB09 /* IkwambeImageCarousel.swift in Sources */,
+				15A6A250273D7F58000F869F /* ProjectView.swift in Sources */,
+				15B860E9273D2BB100108A82 /* ikwambe_foundation_iosApp.swift in Sources */,
+				15019BD62780E369005811D7 /* DonationSummaryView.swift in Sources */,
+				153EA8712740154A008674AF /* LoginResponse.swift in Sources */,
+				15B0BF46275C0E52001CE742 /* IkwambeSecureField.swift in Sources */,
+				15B0BF37275BFCCD001CE742 /* BigBlueButtonStyle.swift in Sources */,
+				150BE01D278F12EC00F47362 /* CreateDonationRequest.swift in Sources */,
+				15BC94172784CAC700CCAD00 /* DonationAmountButton.swift in Sources */,
+				15B0BF3F275C0323001CE742 /* SmallBlueButtonStyle.swift in Sources */,
+				153EA8702740154A008674AF /* LoginRequest.swift in Sources */,
+				1528B31B278F6C0100CCDE1E /* Donation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		15B860F1273D2BB200108A82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		15B860F2273D2BB200108A82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		15B860F4273D2BB200108A82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ikwambe-foundation-ios/Preview Content\"";
+				DEVELOPMENT_TEAM = 6QRV3HD79G;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ikwambe-foundation-ios/Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "nl.luukkenselaar.ikwambe-foundation-ios";
+				PRODUCT_NAME = "Ikwambe Foundation";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		15B860F5273D2BB200108A82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ikwambe-foundation-ios/Preview Content\"";
+				DEVELOPMENT_TEAM = 6QRV3HD79G;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ikwambe-foundation-ios/Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "nl.luukkenselaar.ikwambe-foundation-ios";
+				PRODUCT_NAME = "Ikwambe Foundation";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		15B860E0273D2BB100108A82 /* Build configuration list for PBXProject "ikwambe-foundation-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15B860F1273D2BB200108A82 /* Debug */,
+				15B860F2273D2BB200108A82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15B860F3273D2BB200108A82 /* Build configuration list for PBXNativeTarget "ikwambe-foundation-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15B860F4273D2BB200108A82 /* Debug */,
+				15B860F5273D2BB200108A82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		15788786278F51CF00C2236A /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
+			requirement = {
+				kind = exactVersion;
+				version = 2.6.3;
+			};
+		};
+		15A6A233273D6E6B000F869F /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = exactVersion;
+				version = 4.2.2;
+			};
+		};
+		15A6A23E273D7124000F869F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		15788787278F51CF00C2236A /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15788786278F51CF00C2236A /* XCRemoteSwiftPackageReference "JWTDecode" */;
+			productName = JWTDecode;
+		};
+		15A6A234273D6E6B000F869F /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15A6A233273D6E6B000F869F /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		15A6A23F273D7124000F869F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15A6A23E273D7124000F869F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 15B860DD273D2BB100108A82 /* Project object */;
+}
